@@ -1,0 +1,133 @@
+
+.profile {
+    display: block;
+    height: 100%;
+    text-align: center;
+    padding: 3px;
+}
+
+.profile-photo {
+    padding: 5rem;
+    margin-bottom: 15px;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.336)
+}
+
+.profile-photo img {
+    border: 1px solid;
+    border-radius: 50% 50% 50% 50%;
+    padding: 0.2rem;
+    height: 13rem;
+    width: 13rem;
+    margin-bottom: 10px;
+}
+
+.profile-photo p {
+    font-size: 2.5rem;
+}
+
+.profile-photo p label{
+    margin-left: 10px;
+}
+
+.profile-photo p label:hover{
+    cursor: pointer;
+}
+
+.camera {
+    position: relative;
+    left: -2.7rem;
+    top: 3.5rem;
+}
+
+.camera:hover{
+    cursor: pointer;
+}
+
+.profile-data {
+    display: block;
+    padding: 5rem;
+    font-size: 1.5rem;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.336)
+}
+
+.profile-data-item{
+    margin-bottom: 3vh;
+    margin-left: 7rem;
+    margin-right: 7rem;
+}
+
+.profile-data-item label{
+    display: block;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.profile-data-item input {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.profile-data-item span {
+    margin-left: -2.5rem;
+    cursor: pointer;
+}
+
+.interest {
+    width: 100%;
+    text-align: left;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(252, 252, 252, 0.596);
+}
+
+#interest {
+    position: absolute;
+    margin-left: -2.5rem;
+}
+
+
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 400px){
+    /* Mobile view horizontal*/
+
+    .profile-photo {
+        padding: 0.5rem;
+    }
+    
+    .profile-photo img {
+        margin-left: 2rem;
+        height: 10rem;
+        width: 10rem;
+    }
+    
+    .profile-photo p {
+        font-size: 1.7rem;
+    }
+    
+    .profile-photo p label{
+        margin-left: 5px;
+    }
+    
+    .camera {
+        top: 3rem;
+    }
+    
+    .profile-data {
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+    
+    .profile-data-item{
+        margin-bottom: 3vh;
+        margin-left: 0.3rem;
+        margin-right: 0.7rem;
+    }
+    
+}

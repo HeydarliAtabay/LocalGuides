@@ -1,4 +1,4 @@
-const SidebarParent = styled.div`
+/* const SidebarParent = styled.div`
   background: #cf3d2a;
   width: 250px;
   height: 100vh;
@@ -10,7 +10,7 @@ const SidebarItem = styled.div`
   //Change the background color if 'active' prop is received
   background: ${props => props.active ? "#b15b00" : ""};
   margin: 4px 12px;
-  border-radius: 4px;
+  border-radius: 4px; */
 
   p {
     color: white;
@@ -18,11 +18,10 @@ const SidebarItem = styled.div`
     text-decoration: none;
   }
   
-  &:hover {
+  p:hover {
     cursor:pointer;
   }
   
-  &:hover:not(:first-child) {
+  p:hover:not(:first-child) {
     background: #c34a36;
   }
-`;
