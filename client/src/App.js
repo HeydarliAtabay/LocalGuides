@@ -3,14 +3,31 @@ import Login from './Components/Login'
 import React, { Component } from 'react';
 import Sidebar from './Components/Sidebar';
 import ProfileUser from './Components/ProfileUser';
+import GuideList from './Components/GuideList'
+
+import {Switch} from 'react-router';
+import { BrowserRouter,Redirect, Route } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <ProfileUser/>
-        {/* <Sidebar></Sidebar>
-        <Login></Login> */}
+        <Sidebar/>
+        <BrowserRouter>
+      <Switch>
+              
+              <Route path="/login">
+               <Login/>
+              </Route>
+              <Route path="/user">
+               <ProfileUser/>
+              </Route>
+              <Route path="/guides">
+               <GuideList/>
+              </Route>
+             </Switch>  
+       </BrowserRouter>
       </div>
     );
   }
