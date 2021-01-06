@@ -81,20 +81,22 @@
     width: 100%;
     text-align: left;
     border: 1px solid;
+    margin-left: 0.5rem;
     border-radius: 10px 10px 10px 10px;
     background: rgba(252, 252, 252, 0.596);
 }
 
 #interest {
-    position: absolute;
+    position: relative;
     margin-left: -2.5rem;
+    bottom: 3rem
 }
 
 
 
 /* --------------------------------------- Mobile view ------------------------------------------------- */
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 700px){
     /* Mobile view horizontal*/
 
     .profile-photo {
@@ -128,6 +130,11 @@
         margin-bottom: 3vh;
         margin-left: 0.3rem;
         margin-right: 0.7rem;
+    }
+
+    #interest {
+        margin-left: calc(100% - 3rem);
+        bottom: 5rem
     }
     
 }

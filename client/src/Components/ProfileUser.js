@@ -59,12 +59,8 @@ class ProfileUser extends React.Component {
                     </div>
                     <div className={"profile-data-item"}>
                         <label><b><i>Interests</i></b></label>
-                        {/* <input type="text" width="300"
-                            placeholder="interest"
-                            disabled={true}
-                            /> */}
                         <textarea className={"interest"} 
-                                    cols={60} rows={2}
+                                    cols={30} rows={2}
                                     disabled={true}
                         >
                             &nbsp; sport , &#13;&#10; music

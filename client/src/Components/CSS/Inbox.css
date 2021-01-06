@@ -1,0 +1,104 @@
+
+.inbox {
+    text-align: center;
+    padding: 3rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    margin: 3rem;
+    height: 100%;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.336)
+}
+
+.inbox .header {
+    font-size: 3rem;
+    font-style: oblique;
+    font-family: system-ui;
+}
+
+.inbox-item {
+    padding: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+    text-align: left;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.336)
+}
+
+.inbox-item img {
+    padding: 0.2rem;
+    height: 6rem;
+    width: 6rem;
+    border: 1px solid;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.inbox-item span {
+    display: inline-block;
+    margin-left: 1rem;
+    cursor: pointer;
+    width: calc(100% - 9rem);
+    text-align: left;
+    line-height: 1.5rem;
+}
+
+.inbox-item .sender-name {
+    display: block;
+    font-size: 1.8rem;
+    font-style: oblique;
+    cursor: pointer;
+    font-family: system-ui;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.inbox-item .message {
+    width: 100%;
+    height: 3rem;
+    max-height: 3rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-style: oblique;
+    font-family: system-ui;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.36)
+}
+
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+
+    .inbox {
+        padding: 0.7rem;
+        margin: 0.5rem;
+    }
+    
+    .inbox-item {
+        padding: 0.7rem;
+        margin-top: 1rem;
+    }
+    
+    .inbox-item img {
+        height: 5rem;
+        width: 5rem;
+    }
+    
+    .inbox-item span {
+        margin-left: 0.5rem;
+        width: calc(100% - 7rem);
+        line-height: 1.2rem;
+    }
+    
+    .inbox-item .sender-name {
+        font-size: 1.6rem;
+    }
+}
