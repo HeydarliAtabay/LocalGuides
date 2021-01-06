@@ -5,11 +5,13 @@
   align-items: center;
 }
 .title {
-  font-size: 3rem;
+  margin-top: 20px;
+  font-size: 2rem;
   text-align: center;
+  font-weight: 600;
 }
 .filtertxt {
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
 }
 
@@ -20,4 +22,5 @@
   align-self: center;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 25px;
+  border: 1px solid;
 }

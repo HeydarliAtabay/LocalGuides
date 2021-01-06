@@ -1,15 +1,16 @@
 .guideitem {
   padding: 20px;
-  width: 95%;
+  width: 99%;
   align-items: center;
   align-self: center;
   justify-content: center;
-  border: 5 px solid rgb(2, 2, 2);
+  border: 1px solid;
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.5);
   margin-bottom: 10px;
   margin-top: 20px;
-  margin-left: 25px;
+  cursor: pointer;
+  transition: color 200ms;
 }
 .gttitle {
   font-size: 50px;
@@ -21,4 +22,74 @@
 
 .itemheader {
   display: flex;
+  float: left;
+}
+
+.itemheader img {
+  padding: 0.2rem;
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid;
+  border-radius: 50% 50% 50% 50%;
+}
+.itemheader h3 {
+  font-size: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.languages {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.languages img {
+  padding: 0.2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.languages label {
+  font-size: 22px;
+}
+
+#price {
+  text-align: right;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.username {
+  float: inline-end;
+}
+.username h3 {
+  font-size: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.Rating {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }

@@ -30,6 +30,12 @@ class App extends Component {
               <Route path="/guides">
                <GuideList/>
               </Route>
+              <Route path="/inbox">
+               <Inbox/>
+              </Route>
+              <Route path="/chat">
+               <Chat/>
+              </Route>
              </Switch>  
        </BrowserRouter>
       </div>

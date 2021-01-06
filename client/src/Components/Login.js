@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './CSS/login.css'
 
 class Login extends React.Component{
