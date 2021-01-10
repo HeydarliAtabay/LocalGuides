@@ -1,7 +1,14 @@
 #sidebar{
-  background: #c34a36;
+  background:rgba(252, 252, 252, 0.336);
+  
+  /* background: #c34a36; */
   width: 270px;
   height: 100vh;
+}
+
+#btn:hover{
+  background:rgba(252, 252, 252, 0.336);
+
 }
 
 #button{
@@ -9,14 +16,19 @@
   margin: 1rem;
     padding: 1rem;
     border-radius: 10px 10px 10px 10px;
-    background: rgba(0, 0, 0, 0.2);
+    background:rgba(252, 252, 252, 0.336);
+    
+
+    /* background: rgba(0, 0, 0, 0.2); */
 }
 #buttonLogout{
   float: right;;
   margin: 1rem;
   padding: 1rem;
   border-radius: 15px 15px 15px 15px;
-  background: rgba(0, 0, 0, 0.3);
+  background:rgba(252, 252, 252, 0.336);
+
+  /* background: rgba(0, 0, 0, 0.3); */
 }
 #text{
   padding-left:40px;
@@ -34,5 +46,7 @@
   margin: 1rem;
     padding: 1rem;
     border-radius: 10px 10px 10px 10px;
-    background: rgba(0, 0, 0, 0.3);
+    background:rgba(252, 252, 252, 0.336);
+
+    /* background: rgba(0, 0, 0, 0.3); */
 }

@@ -19,7 +19,7 @@ function Sidebar() {
 
     <div id="button">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
-      <Button data-testid="course-upload-button" variant="outline-dark" block>
+      <Button id="btn" variant="outline-dark" block>
         <img style={{
           height: "2rem",
           float: "left",
@@ -32,7 +32,7 @@ function Sidebar() {
     </div>
     <div id="button">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/inbox">
-    <Button data-testid="course-upload-button" variant="outline-dark" block>
+    <Button id="btn" variant="outline-dark" block>
         <img style={{
           height: "2rem",
           float: "left",
@@ -47,7 +47,7 @@ function Sidebar() {
 
     <div id="button">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/user">
-    <Button data-testid="course-upload-button" variant="outline-dark" block>
+    <Button id="btn" variant="outline-dark" block>
         <img style={{
           height: "2rem",
           float: "left",
@@ -62,7 +62,7 @@ function Sidebar() {
 
     <div id="button">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
-      <Button data-testid="course-upload-button" variant="outline-dark" block>
+      <Button id="btn" variant="outline-dark" block>
         <img style={{
           height: "2rem",
           float: "left",
@@ -77,7 +77,7 @@ function Sidebar() {
 
     <div id="buttonLogout">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/login">
-      <Button  variant="outline-dark" >
+      <Button id="btn"  variant="outline-dark" >
         <img style={{
           height: "1.3rem",
           float: "right",
