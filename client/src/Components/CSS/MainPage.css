@@ -1,0 +1,26 @@
+#main{
+
+    margin: 200px auto;
+    display: "block",
+}
+#card{
+  display: block;
+  padding: 3rem;
+  font-size: 1.5rem;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+#mainText{
+  display: block;
+  text-align: center;
+  color: black;
+}
+
+/* #image{
+
+  display: block;
+  margin: auto;
+  margin-right: "auto";
+  width: "30%";
+} */

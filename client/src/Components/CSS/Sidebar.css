@@ -1,27 +1,38 @@
-/* const SidebarParent = styled.div`
-  background: #cf3d2a;
-  width: 250px;
+#sidebar{
+  background: #c34a36;
+  width: 270px;
   height: 100vh;
-`;
+}
 
-const SidebarItem = styled.div`
-  padding: 16px 24px;
-  transition: all 0.25s ease-in-out;
-  //Change the background color if 'active' prop is received
-  background: ${props => props.active ? "#b15b00" : ""};
-  margin: 4px 12px;
-  border-radius: 4px; */
+#button{
+  display: block;
+  margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.2);
+}
+#buttonLogout{
+  float: right;;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px 15px 15px 15px;
+  background: rgba(0, 0, 0, 0.3);
+}
+#text{
+  padding-left:40px;
+  padding-top:5px;
+  color: black;
+}
 
-  p {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  p:hover {
-    cursor:pointer;
-  }
-  
-  p:hover:not(:first-child) {
-    background: #c34a36;
-  }
+#textM{
+  padding-left:30px;
+  padding-top:5px;
+  color: black;
+}
+#mainName{
+  display: block;
+  margin: 1rem;
+    padding: 1rem;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
