@@ -1,0 +1,44 @@
+
+.edit-item{
+    margin-bottom: 3vh;
+    margin-left: 7rem;
+    margin-right: 7rem;
+}
+
+.edit-item label{
+    display: block;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.edit-item input {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.edit-item span {
+    margin-left: -2.5rem;
+    cursor: pointer;
+}
+
+.btn-edit {
+    margin: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5rem;
+}
+
+
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+    /* Mobile view horizontal*/
+    
+    .edit-item{
+        margin-bottom: 3vh;
+        margin-left: 0.3rem;
+        margin-right: 0.7rem;
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import EditData from './EditData';
 import './CSS/Profile.css';
 import photo from '../assets/profile.jpg';
 
@@ -9,6 +10,21 @@ const calendar = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 class ProfileUser extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+                editData: {
+                    header: undefined,
+                    data: undefined
+                }
+            }
+        this.catchEdit = this.catchEdit.bind(this);
+    }
+
+    catchEdit (header, data) {
+        const editdata = {
+                    header: header,
+                    data: data
+                }
+        this.setState({editData: editdata});
     }
  
     render() {
@@ -22,17 +38,18 @@ class ProfileUser extends React.Component {
 
                     <p>
                         <i>Name Surname </i>
-                        <label>{edit}</label>
+                        <label onClick={() => this.catchEdit('Name & Surname')}>{edit}</label>
                     </p>
                 </div>
                 <div className="profile-data">
+                    <EditData editData={this.state.editData} />
                     <div className={"profile-data-item"}>
                         <label><b><i>Country</i></b></label>
                         <input type="text" 
                             placeholder="Hungary"
                             disabled={true}
                             />
-                        <span>
+                        <span onClick={() => this.catchEdit('Country')}>
                             {edit}
                         </span>
                     </div>
@@ -43,7 +60,7 @@ class ProfileUser extends React.Component {
                             defaultValue="1996-04-24"
                             disabled={true}
                             />
-                        <span>
+                        <span onClick={() => this.catchEdit('Birth date')}>
                             {calendar}
                         </span>
                     </div>
@@ -53,7 +70,7 @@ class ProfileUser extends React.Component {
                             placeholder="Male"
                             disabled={true}
                             />
-                        <span>
+                        <span onClick={() => this.catchEdit('Gender')}>
                             {edit}
                         </span>
                     </div>
@@ -66,7 +83,7 @@ class ProfileUser extends React.Component {
                             &nbsp; sport , &#13;&#10; music
                             
                         </textarea>
-                        <span id="interest">
+                        <span id="interest" onClick={() => this.catchEdit('Interests')}>
                             {edit}
                         </span>
                     </div>
