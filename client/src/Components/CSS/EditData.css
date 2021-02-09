@@ -1,23 +1,23 @@
 
-.edit-item{
+.edit-item {
     margin-bottom: 3vh;
     margin-left: 7rem;
     margin-right: 7rem;
 }
 
-.edit-item label{
+.lbl-header {
     display: block;
     text-align: left;
     padding-left: 1rem;
 }
 
-.edit-item input {
+.inputs {
     width: 100%;
     border: 1px solid;
     border-radius: 10px 10px 10px 10px;
 }
 
-.edit-item span {
+.btn-group {
     margin-left: -2.5rem;
     cursor: pointer;
 }
@@ -29,7 +29,43 @@
     border-radius: 5rem;
 }
 
+.gender-container {
+    display: block;
+}
 
+.gender {
+    display: inline;
+    margin-right: 2.5rem;
+    cursor: pointer;
+}
+
+.gender input {
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+}
+
+.gender label{
+    cursor: pointer;
+    padding-left: 7px;
+}
+
+.interests-container {
+    display: block;
+    width: 22rem;
+    padding-bottom: 7rem;
+}
+
+.interests-container input {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 0.2rem;
+}
+
+.interests-container span {
+    float: left;
+    margin-right: 1rem;
+}
 
 /* --------------------------------------- Mobile view ------------------------------------------------- */
 

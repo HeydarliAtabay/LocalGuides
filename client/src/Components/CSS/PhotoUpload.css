@@ -1,0 +1,39 @@
+input[type="file"] {
+    /* appearance: none; */
+    display: none;
+}
+
+.image {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.image img {
+    
+    width: 13rem;
+    height: 13rem;
+}
+
+.lbl-upload {
+    display: block;
+    text-align: center;
+}
+
+.lbl-max {
+    padding: 15px;
+    font-size: 2rem;
+    border-radius: 0.3rem;
+    color: rgb(100, 99, 99);
+    border: 1px solid rgba(117, 117, 117, 0.712);
+    cursor: pointer;
+}
+
+.lbl-mini {
+    padding: 8px;
+    font-size: 1.3rem;
+    border-radius: 0.3rem;
+    color: rgb(100, 99, 99);
+    border: 1px solid rgba(117, 117, 117, 0.712);
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import EditData from './EditData';
+import PhotoUploadWindow from './PhotoUploadWindow';
 import './CSS/Profile.css';
 import photo from '../assets/profile.jpg';
 
@@ -14,10 +15,46 @@ class ProfileUser extends React.Component {
                 editData: {
                     header: undefined,
                     data: undefined
-                }
+                },
+                // selectedPhoto: undefined,
+                showUploadWindow: false
             }
+        this.onShowUploadWindow = this.onShowUploadWindow.bind(this);
+        this.onHideUploadWindow = this.onHideUploadWindow.bind(this);
+        // this.onPhotoChange = this.onPhotoChange.bind(this);
+        // this.onPhotoUpload = this.onPhotoUpload.bind(this);
         this.catchEdit = this.catchEdit.bind(this);
+        this.hideEditBox = this.hideEditBox.bind(this);
     }
+
+    onShowUploadWindow (){
+        this.setState({showUploadWindow: true});
+    }
+
+    onHideUploadWindow (){
+        this.setState({showUploadWindow: false});
+    }
+
+    // onPhotoChange (e){
+    //     this.setState({selectedPhoto: e.target.files[0]});
+    // }
+
+    // onPhotoUpload (){
+    //     //create obj of form data
+    //     const formData = new FormData();
+
+    //     //upload photo to form data
+    //     formData.append(
+    //             'photo',
+    //             this.state.selectedPhoto,
+    //             this.state.selectedPhoto.name
+    //         );
+
+    //     console.log('obj: ',formData);
+    //     console.log('name: ', this.state.selectedPhoto.name);
+    //     console.log('type: ', this.state.selectedPhoto.type);
+
+    // }
 
     catchEdit (header, data) {
         const editdata = {
@@ -26,67 +63,104 @@ class ProfileUser extends React.Component {
                 }
         this.setState({editData: editdata});
     }
+
+    hideEditBox (){
+        const editdata = {
+            header: undefined,
+            data: undefined
+        }
+        this.setState({editData: editdata});
+    }
  
     render() {
         return (
             <div className="profile">
                 <div className="profile-photo">
                     <img alt="Profile" src={photo} />
-                    <label className={"camera"}>
+                    {/* <input type="file" id="photo" onChange={this.onPhotoChange} accept="image/*"/> */}
+                    <label className={"camera"}
+                            onClick={this.onShowUploadWindow} >
                         {camera}
                     </label>
 
-                    <p>
-                        <i>Name Surname </i>
-                        <label onClick={() => this.catchEdit('Name & Surname')}>{edit}</label>
-                    </p>
+                    <PhotoUploadWindow show={this.state.showUploadWindow}
+                                        onHide={()=>this.onHideUploadWindow()}
+                        />
+                    {
+                        this.state.editData.header === 'Name & Surname' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        :
+                        <p>
+                            <i>Name Surname </i>
+                            <label onClick={() => this.catchEdit('Name & Surname')}>{edit}</label>
+                        </p>
+                    }
+                    
                 </div>
                 <div className="profile-data">
-                    <EditData editData={this.state.editData} />
-                    <div className={"profile-data-item"}>
-                        <label><b><i>Country</i></b></label>
-                        <input type="text" 
-                            placeholder="Hungary"
-                            disabled={true}
-                            />
-                        <span onClick={() => this.catchEdit('Country')}>
-                            {edit}
-                        </span>
-                    </div>
-                    <div className={"profile-data-item"}>
-                        <label><b><i>Birth date</i></b></label>
-                        <input type="date" 
-                            placeholder="Birth date"
-                            defaultValue="1996-04-24"
-                            disabled={true}
-                            />
-                        <span onClick={() => this.catchEdit('Birth date')}>
-                            {calendar}
-                        </span>
-                    </div>
-                    <div className={"profile-data-item"}>
-                        <label><b><i>Gender</i></b></label>
-                        <input type="text" 
-                            placeholder="Male"
-                            disabled={true}
-                            />
-                        <span onClick={() => this.catchEdit('Gender')}>
-                            {edit}
-                        </span>
-                    </div>
-                    <div className={"profile-data-item"}>
-                        <label><b><i>Interests</i></b></label>
-                        <textarea className={"interest"} 
-                                    cols={30} rows={2}
-                                    disabled={true}
-                        >
-                            &nbsp; sport , &#13;&#10; music
-                            
-                        </textarea>
-                        <span id="interest" onClick={() => this.catchEdit('Interests')}>
-                            {edit}
-                        </span>
-                    </div>
+                    
+                    {
+                        this.state.editData.header === 'Country' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        :
+                        <div className={"profile-data-item"}>
+                            <label><b><i>Country</i></b></label>
+                            <input type="text" 
+                                placeholder="Hungary"
+                                disabled={true}
+                                />
+                            <span onClick={() => this.catchEdit('Country')}>
+                                {edit}
+                            </span>
+                        </div>
+                    }
+
+                    {
+                        this.state.editData.header === 'Birth date' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        :
+                        <div className={"profile-data-item"}>
+                            <label><b><i>Birth date</i></b></label>
+                            <input type="date" 
+                                placeholder="Birth date"
+                                defaultValue="1996-04-24"
+                                disabled={true}
+                                />
+                            <span onClick={() => this.catchEdit('Birth date')}>
+                                {calendar}
+                            </span>
+                        </div>
+                    }
+                    
+                    {
+                        this.state.editData.header === 'Gender' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        :
+                        <div className={"profile-data-item"}>
+                            <label><b><i>Gender</i></b></label>
+                            <input type="text" 
+                                placeholder="Male"
+                                disabled={true}
+                                />
+                            <span onClick={() => this.catchEdit('Gender')}>
+                                {edit}
+                            </span>
+                        </div>
+                    }
+                    
+                    {
+                        this.state.editData.header === 'Interests' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        :
+                        <div className={"profile-data-item"}>
+                            <label><b><i>Interests</i></b></label>
+                            <textarea className={"interest"} 
+                                        cols={30} rows={2}
+                                        disabled={true}
+                            >
+                                &nbsp; sport , &#13;&#10; music
+                                
+                            </textarea>
+                            <span id="interest" onClick={() => this.catchEdit('Interests')}>
+                                {edit}
+                            </span>
+                        </div>
+                    }
                     
                 </div>
             </div>
