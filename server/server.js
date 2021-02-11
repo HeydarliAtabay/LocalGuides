@@ -56,20 +56,6 @@ app.post('/api/login/tourist', (req, res)=>{
   ////////////////////     User Profile   //////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////
 
-// app.post('/api/uploadprofilephoto/:userId', (req, res) => {
-//     // const id = req.params.userId;
-//     // const file = req.file;
-//     // console.log('file: ', file);
-//     // dao.uploadProfilePhoto(id, file)
-//     // .then((ok) => {
-//     //     console.log('upload okay on server')
-//     //     res.status(201).send()})
-//     // .catch((err) => {
-//     //     console.log('upload fault on server')
-//     //     res.status(500).json(err);
-//     // })
-// });
-
 //////////////// Profile Photo Upload ///////////////////////////
 
 const storage = multer.diskStorage({
@@ -112,7 +98,7 @@ app.post('/api/upload-profile-photo/:id', upload.single('profileImg'), (req, res
 
 //////////////////// Upload end /////////////////
 
-
+/// tourist profile edit fields /////////////
 app.post('/api/edit', (req, res) => {
     const data = req.body.data;
     console.log(data);
@@ -124,6 +110,18 @@ app.post('/api/edit', (req, res) => {
         })
 })
 
+//// get all chats of tourist////////////////////
+app.get('/api/get-chats/:userId', (req,res) => {
+
+    const id = req.params.userId;
+
+    dao.getChats(id)
+        .then((chats) => {
+            res.status(200).json(chats)
+        }).catch(err => {
+            res.status(500).send({err: err});
+        })
+})
 
 
 app.listen(PORT, ()=>console.log(`Server running on http://localhost:${PORT}/`));

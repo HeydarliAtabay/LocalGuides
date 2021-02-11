@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../API/APIuser.js';
 import './CSS/Inbox.css';
 import photo from '../assets/profile.jpg';
 
@@ -6,6 +7,19 @@ import photo from '../assets/profile.jpg';
 class Inbox extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            chats: []
+        }
+    }
+
+    componentDidMount(){
+        // modify user id for input after login
+        API.getChats(3)
+            .then((chats) => {
+                this.setState({chats: chats});
+            }).catch((err) => {
+                console.log(err);
+            })
     }
  
     render() {
@@ -14,19 +28,27 @@ class Inbox extends React.Component {
 
                 <label className="header">Inbox</label>
 
-                <div className="inbox-item">
-                    <img alt="Profile" src={photo} />
-                    <span>
-                        <label className={"sender-name"}>
-                            &nbsp;Name Surname
-                        </label>
-                        <label className={"message"}>
-                            &nbsp;Good evening. I am ...
-                        </label>
-                    </span>
-                </div>
+                {
+                    this.state.chats.map( chat => {
+                        return (
+                            <div className="inbox-item" key={chat.chatId}>
+                                <img alt="Profile" 
+                                        src={chat.photo !== null ? chat.photo : photo} 
+                                    />
+                                <span>
+                                    <label className={"sender-name"}>
+                                        &nbsp;{chat.name + ' ' + chat.surname}
+                                    </label>
+                                    <label className={"message"}>
+                                        &nbsp;{chat.message}
+                                    </label>
+                                </span>
+                            </div>
+                        )
+                    })
+                }
 
-                <div className="inbox-item">
+                {/* <div className="inbox-item">
                     <img alt="Profile" src={photo} />
                     <span>
                         <label className={"sender-name"}>
@@ -47,7 +69,7 @@ class Inbox extends React.Component {
                             &nbsp;Hii
                         </label>
                     </span>
-                </div>            
+                </div>             */}
                 
             </div>
         );

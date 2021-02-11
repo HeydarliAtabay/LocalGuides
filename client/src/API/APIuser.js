@@ -1,4 +1,4 @@
-async function uploadPhoto(id, file) {
+async function uploadPhoto (id, file) {
     return new Promise((resolve, reject) => {
 
         fetch('/api/upload-profile-photo/' + id, {
@@ -36,6 +36,17 @@ async function editProfile (data){
     }) 
 }
 
-const userMethods = {uploadPhoto, editProfile}
+async function getChats (userId){
+    let response = await fetch('/api/get-chats/' + userId);
+    let result = await response.json();
+
+    if(response.ok){
+        return result;
+    } else{
+        return [];
+    }
+}
+
+const userMethods = {uploadPhoto, editProfile, getChats}
 
 export default userMethods;

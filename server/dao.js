@@ -38,25 +38,10 @@ exports.getTourist = function (email) {
   });
 };
 
-// exports.uploadProfilePhoto = function(userId, photo) {
-//   return new Promise((resolve, reject) => {
-//     const query = 'UPDATE tourist SET photo = ? WHERE id = ?';
-
-//     // console.log('photo', photo.name);
-//     db.run(query, [photo, userId], function(err, res) {
-//       if(err) {
-//         reject(err);
-//       } else {
-//         resolve(res);
-//       }
-//     })
-//   })
-// }
-
 exports.uploadPhoto = function(url, userId){
 
   return new Promise((resolve, reject) => {
-    let query = 'UPDATE tourist SET photo = ? WHERE id = ?';
+    let query = 'UPDATE users SET photo = ? WHERE id = ?';
     
     db.run(query, [url, userId], function(err, res) {
             if(err) {
@@ -71,7 +56,7 @@ exports.uploadPhoto = function(url, userId){
 exports.editDataUser = function(data){
 
     return new Promise((resolve, reject) => {
-      let query = 'UPDATE tourist SET ';
+      let query = 'UPDATE users SET ';
       
       switch (data.header){
         case 'Country': query += "country = '" + data.text.country + "'"; break;
@@ -91,4 +76,26 @@ exports.editDataUser = function(data){
               }
       });
     })
+}
+
+exports.getChats = function(userId){
+
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT i.id, i.chatId, i.sender, i.reciever, u.name, u.surname, u.photo, i.message, MAX(i.date) as date '
+                + 'FROM inbox i, users u '
+                + 'WHERE (i.reciever = ? OR i.sender = ?) AND ' 
+                + 'u.id = CASE WHEN i.sender <> ? THEN i.sender '
+                            + 'ELSE i.reciever END '
+                + 'GROUP by i.chatId';
+    
+    db.all(query, [userId, userId, userId], function(err, rows) {
+            if(err) {
+              reject(err);
+            } else if (rows.length === 0) 
+              resolve(undefined);
+            else {
+              resolve(rows);
+            }
+    });
+  })
 }

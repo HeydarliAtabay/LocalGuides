@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../API/APIuser.js';
 import './CSS/Chat.css';
 import { Button } from 'react-bootstrap';
 import photo from '../assets/profile.jpg';
@@ -9,6 +10,19 @@ const send = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 class Chat extends React.Component {
     constructor(props) {
         super(props);
+        // this.state = {
+        //     // chats: []
+        // }
+    }
+
+    componentDidMount(){
+        // // modify user id for input after login
+        // API.getChats(3)
+        //     .then((chats) => {
+        //         this.setState({chats: chats});
+        //     }).catch((err) => {
+        //         console.log(err);
+        //     })
     }
  
     render() {
