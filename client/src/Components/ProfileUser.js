@@ -16,6 +16,7 @@ class ProfileUser extends React.Component {
                     header: undefined,
                     data: undefined
                 },
+                profilePhoto: undefined,
                 // selectedPhoto: undefined,
                 showUploadWindow: false
             }
@@ -33,6 +34,10 @@ class ProfileUser extends React.Component {
 
     onHideUploadWindow (){
         this.setState({showUploadWindow: false});
+    }
+
+    handlePhoto = (src) =>{
+        this.setState({profilePhoto: src});
     }
 
     // onPhotoChange (e){
@@ -76,8 +81,8 @@ class ProfileUser extends React.Component {
         return (
             <div className="profile">
                 <div className="profile-photo">
-                    <img alt="Profile" src={photo} />
-                    {/* <input type="file" id="photo" onChange={this.onPhotoChange} accept="image/*"/> */}
+                    <img alt="Profile" 
+                        src={this.state.profilePhoto !== undefined ? this.state.profilePhoto : photo} />
                     <label className={"camera"}
                             onClick={this.onShowUploadWindow} >
                         {camera}
@@ -85,6 +90,7 @@ class ProfileUser extends React.Component {
 
                     <PhotoUploadWindow show={this.state.showUploadWindow}
                                         onHide={()=>this.onHideUploadWindow()}
+                                        handlePhoto={this.handlePhoto}
                         />
                     {
                         this.state.editData.header === 'Name & Surname' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 

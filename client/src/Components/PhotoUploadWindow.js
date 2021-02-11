@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../API/APIuser.js';
 import { Button, Modal, Image } from 'react-bootstrap';
 import './CSS/PhotoUpload.css';
 
@@ -24,21 +25,26 @@ class PhotoUploadWindow extends React.Component {
         this.setState({selectedPhoto: photo, src: src});
     }
 
-    onPhotoUpload (){
+    onPhotoUpload (e){
+        e.preventDefault();
         //create obj of form data
         const formData = new FormData();
 
         //upload photo to form data
         formData.append(
-                'photo',
+                'profileImg',
                 this.state.selectedPhoto,
                 this.state.selectedPhoto.name
             );
 
-        console.log('obj: ',formData);
-        console.log('name: ', this.state.selectedPhoto.name);
-        console.log('type: ', this.state.selectedPhoto.type);
-
+        API.uploadPhoto(3, formData)
+        .then((res) => {
+            this.props.handlePhoto(res.url);
+            this.props.onHide();
+            console.log('url: ' + res.url);
+        }).catch(() => {
+            console.log('upload error on react')
+        });
     }
 
     render () {
@@ -70,7 +76,7 @@ class PhotoUploadWindow extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-danger" onClick={this.props.onHide}>Close</Button>
-                    <Button className={'btn-outline'} onClick={this.props.confirm}>Upload</Button>
+                    <Button className={'btn-outline'} onClick={e => this.onPhotoUpload(e)}>Upload</Button>
                 </Modal.Footer>
             </Modal>
         );

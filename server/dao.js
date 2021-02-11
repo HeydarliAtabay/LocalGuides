@@ -37,3 +37,58 @@ exports.getTourist = function (email) {
     });
   });
 };
+
+// exports.uploadProfilePhoto = function(userId, photo) {
+//   return new Promise((resolve, reject) => {
+//     const query = 'UPDATE tourist SET photo = ? WHERE id = ?';
+
+//     // console.log('photo', photo.name);
+//     db.run(query, [photo, userId], function(err, res) {
+//       if(err) {
+//         reject(err);
+//       } else {
+//         resolve(res);
+//       }
+//     })
+//   })
+// }
+
+exports.uploadPhoto = function(url, userId){
+
+  return new Promise((resolve, reject) => {
+    let query = 'UPDATE tourist SET photo = ? WHERE id = ?';
+    
+    db.run(query, [url, userId], function(err, res) {
+            if(err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+    });
+  })
+}
+
+exports.editDataUser = function(data){
+
+    return new Promise((resolve, reject) => {
+      let query = 'UPDATE tourist SET ';
+      
+      switch (data.header){
+        case 'Country': query += "country = '" + data.text.country + "'"; break;
+        case 'Name & Surname': query += "name = '" + data.text.name + "' , surname = '" + data.text.surname + "'"; break;
+        case 'Birth date': query += "birthdate = '" + data.text.birthdate + "'"; break;
+        case 'Gender': query += "gender = '" + data.text.gender + "'"; break;
+        case 'Interests': query += "interests = '" + data.text.interests.join(', ') + "'"; break; // add to tabele new column
+      }
+
+      query += ' WHERE id = ?';
+      console.log(query);
+      db.run(query, [data.userId], function(err, res) {
+              if(err) {
+                reject(err);
+              } else {
+                resolve(res);
+              }
+      });
+    })
+}
