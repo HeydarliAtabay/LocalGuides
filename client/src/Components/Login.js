@@ -1,45 +1,77 @@
 import React from 'react';
 import './CSS/login.css'
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import API from '../API/api.js';
+import MainPage from './MainPage'
 
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      user: null,
+      submitted: false,
+      authErr: null
+    }
+  }
 
-class Login extends React.Component{
-  render(){
-    return(
+  onChangeUsername = (event) => {
+    this.setState({username: event.target.value});
+  };
+
+  //login
+  login = (username) => {
+    API.userLogin(username).then((user) => {
+        this.setState({user: user, submitted: true})
+      })
+      .catch((err) => {
+        const err0 = err.errors[0];
+        this.setState({authErr: err0.msg, submitted: true});
+      });
+  }
+
+  // logout logout = () => {   API.userLogout().then(() => {
+  // this.setState({authUser: null,authErr: null, tasks: null});
+  // history.push('/teacherLogin');     window.location.reload(false);   },() => {
+  //     this.setState({       authErr:'Error occured while logging out. Please
+  // try again.'     }); }   ); }
+
+  render() {
+
+    if (this.props.submitted && this.props.authErr === null) {
+      return <>
+      <MainPage user={this.props.getStudentName} /> 
+      </>
+    }
+
+    return (
       <div id="loginform">
-        <FormHeader title="Login" />
-        <Form />
+        <h2 id="headerTitle">Login</h2>
+
+        <div>
+          <div class="row">
+            <label>Username</label>
+            <input description="Username" value={this.state.username}
+             onChange={(ev) => this.onChangeUsername(ev)}
+        type="text" placeholder="Enter your username"
+          />
+          </div>
+        </div>
+
+        <Link
+          style={{
+          color: 'inherit',
+          textDecoration: 'inherit'
+        }}
+          className="Nav__link"
+          to="/main">
+          <div id="buttonLogin" class="row">
+            <button onClick={this.login(this.state.username)} >Log in</button>
+          </div>
+        </Link>
       </div>
     )
   }
 }
 
-const FormHeader = props => (
-    <h2 id="headerTitle">{props.title}</h2>
-);
-
-const Form = props => (
-   <div>
-     <FormInput description="Username" placeholder="Enter your username" type="text" />
-     <FormInput description="Password" placeholder="Enter your password" type="password"/>
-     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
-
-     <FormButton title="Log in"/>
-     </Link>
-
-   </div>
-);
-
-const FormButton = props => (
-  <div id="buttonLogin" class="row">
-    <button >{props.title}</button>
-  </div>
-);
-
-const FormInput = props => (
-  <div class="row">
-    <label>{props.description}</label>
-    <input type={props.type} placeholder={props.placeholder}/>
-  </div>  
-);
 export default Login;
