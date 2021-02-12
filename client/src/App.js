@@ -49,7 +49,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar user={this.state.user}/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <ProfileUser/>
               </div>
             </Route>
@@ -57,7 +57,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar user={this.state.user}/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <GuideList/>
               </div>
 
@@ -66,7 +66,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar user={this.state.user}/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Inbox/>
               </div>
 
@@ -75,7 +75,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar user={this.state.user}/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Chat/>
               </div>
             </Route>
@@ -83,7 +83,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-               <Sidebar user={this.state.user}/>
+               <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <MainPage user={this.state.user}/>
               </div>
             </Route>

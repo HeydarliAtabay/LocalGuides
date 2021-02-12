@@ -5,7 +5,7 @@ async function userLogin(email) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({email: email}),
+            body: JSON.stringify({username: email}),
         }).then((response) => {
             if (response.ok) {
                 response.json().then((user) => {
@@ -19,7 +19,6 @@ async function userLogin(email) {
         }).catch((err) => { reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
     });
 }
-
 async function uploadPhoto (id, file) {
     return new Promise((resolve, reject) => {
 

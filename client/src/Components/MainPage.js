@@ -13,7 +13,6 @@ class MainPage extends Component {
   }
   setLoc=(e)=>{
     this.setState({location: e})
-    alert("h")
      }
 
   callLoc=()=>{
@@ -36,14 +35,11 @@ class MainPage extends Component {
                 var city = response.address.city; 
                 var country = response.address.country; 
                 var res = city.concat(", ", country);
-                
                 // this.setLoc(res);
                 alert(res); 
-                return null; 
+                return; 
             } 
         }
-
-        
     }
   }
 
@@ -53,8 +49,10 @@ class MainPage extends Component {
       <div id="main">
         <h3 id="mainText">Choose Your Next Destination</h3>
         <div id='card'>
-          <input type='text'></input>
-          <br></br>
+      <div class="input-group">
+          <input placeholder="City name" type='text'></input>
+          <Button onClick={this.callLoc}>Search</Button>
+          </div>
           <br></br>
           <Button onClick={this.callLoc} block>Near by Guides</Button>
         </div>
