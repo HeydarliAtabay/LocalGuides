@@ -1,5 +1,5 @@
 class User {
-    constructor(id, name, surname, birthdate, language, gender, onlineStatus, country, email) {
+    constructor(id, name, surname, birthdate, language, gender, onlineStatus, country, email, photo, interests, rating, price, city, userType) {
       if (id) 
       this.id = id;
       this.name = name;
@@ -11,6 +11,12 @@ class User {
       this.onlineStatus = onlineStatus;
       this.country = country;
       this.email = email;
+      this.photo = photo;
+      this.interests = interests;
+      this.rating = rating;
+      this.price = price;
+      this.city = city;
+      this.userType = userType;
 
     }
   }
