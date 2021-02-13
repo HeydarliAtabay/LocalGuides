@@ -19,10 +19,18 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "socket.io-client": "^3.1.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": {
+    "/chat.*": {
+      "target": "http://localhost:3002/"
+    },
+    "/.*": {
+      "target": "http://localhost:3001/"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

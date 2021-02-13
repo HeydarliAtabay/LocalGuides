@@ -84,6 +84,7 @@
 
 .chat-page .type-message input {
     width: calc(100% - 26rem);
+    /* width: 25rem; */
     font-size: 1.3rem;
     border-radius: 0 0 10px 10px;
 }

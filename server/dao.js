@@ -99,3 +99,20 @@ exports.getChats = function(userId){
     });
   })
 }
+
+exports.getChat = function(chatId){
+
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM inbox WHERE chatId = ?';
+    
+    db.all(query, [chatId], function(err, rows) {
+            if(err) {
+              reject(err);
+            } else if (rows.length === 0) 
+              resolve(undefined);
+            else {
+              resolve(rows);
+            }
+    });
+  })
+}

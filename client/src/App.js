@@ -52,12 +52,9 @@ class App extends Component {
 
             </Route>
             <Route path="/chat">
-              <div style={{
-                display: "flex"
-              }}>
+              
                 <Sidebar/>
                 <Chat/>
-              </div>
             </Route>
             <Route path="/main">
               <div style={{
