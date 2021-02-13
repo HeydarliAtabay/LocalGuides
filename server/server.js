@@ -47,7 +47,7 @@ app.post('/api/login/tourist', (req, res)=>{
         }
     }).catch(
         (err) => {
-            new Promise((resolve) => {setTimeout(resolve, 1000)}).then(() => res.status(401).json(authErrorObj))
+            new Promise((resolve) => {setTimeout(resolve, 1000)}).then(() => res.status(401).json(err))
         }
       );
   });

@@ -10,11 +10,11 @@ import Jumbotron5 from "../assets/logout1.png";
 
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar(props) {
   return ( <> <div id="sidebar">
 
 <div id="mainName">
-        <h5 id="textM">Welcome Laziz</h5>
+        <h5 id="textM">Welcome App</h5>
     </div>
 
     <div id="button">
@@ -76,8 +76,9 @@ function Sidebar() {
     </div>
 
     <div id="buttonLogout">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/login">
-      <Button id="btn"  variant="outline-dark" >
+    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/">
+      <Button 
+      onClick={()=>props.setUser(null)} id="btn"  variant="outline-dark" >
         <img style={{
           height: "1.3rem",
           float: "right",

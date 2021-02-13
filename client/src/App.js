@@ -15,21 +15,41 @@ import {withRouter} from 'react-router-dom';
 import MainPage from './Components/MainPage';
 
 class App extends Component {
-  render() {
+    constructor(props) {
+      super(props);
+      this.state = {
+        user: null,
+        name: ""
+      }
+    }
+
+    setUser=(e)=>{
+       this.setState({user: e})
+       this.setState({user: e})
+        }
+
+    render() {
     return (
       <div>
-        {/* <Sidebar/> */}
         <BrowserRouter>
+        {/* <Sidebar/> */}
+        {this.state.user && 
+        <>
+        <Redirect to='/main'/>
+        </>
+        }
+        {/* {this.state.user && 
+        <Sidebar setUser={this.setUser}/>
+    } */}
           <Switch>
-
-            <Route path="/login">
-              <Login/>
+            <Route  exact path="/">
+              <Login setUser={this.setUser}/>
             </Route>
             <Route path="/user">
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <ProfileUser/>
               </div>
             </Route>
@@ -37,7 +57,7 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <GuideList/>
               </div>
 
@@ -46,22 +66,22 @@ class App extends Component {
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Inbox/>
               </div>
 
             </Route>
             <Route path="/chat">
               
-                <Sidebar/>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Chat/>
             </Route>
             <Route path="/main">
               <div style={{
                 display: "flex"
               }}>
-                <Sidebar></Sidebar>
-                <MainPage/>
+               <Sidebar setUser={this.setUser} user={this.state.user}/>
+                <MainPage user={this.state.user}/>
               </div>
             </Route>
           </Switch>

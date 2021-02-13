@@ -1,8 +1,9 @@
 import React from 'react';
 import './CSS/login.css'
 import {Link} from "react-router-dom";
-import API from '../API/api.js';
+import API from '../API/APIuser.js';
 import MainPage from './MainPage'
+import Sidebar from './Sidebar';
 
 class Login extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Login extends React.Component {
       submitted: false,
       authErr: null
     }
+    this.login=this.login.bind(this);
   }
 
   onChangeUsername = (event) => {
@@ -20,14 +22,16 @@ class Login extends React.Component {
   };
 
   //login
-  login = (username) => {
+  login (username){
     API.userLogin(username).then((user) => {
-        this.setState({user: user, submitted: true})
+        // this.setState({user: user, submitted: true})
+              this.props.setUser(user);
+
       })
       .catch((err) => {
-        const err0 = err.errors[0];
-        this.setState({authErr: err0.msg, submitted: true});
+        this.setState({authErr: err.msg, submitted: true});
       });
+
   }
 
   // logout logout = () => {   API.userLogout().then(() => {
@@ -38,11 +42,12 @@ class Login extends React.Component {
 
   render() {
 
-    if (this.props.submitted && this.props.authErr === null) {
-      return <>
-      <MainPage user={this.props.getStudentName} /> 
-      </>
-    }
+    // if (this.props.submitted && this.props.authErr === null) {
+    //   return <>
+    //   <MainPage user={this.props.getStudentName} /> 
+    //   <Sidebar user={this.props.getStudentName} /> 
+    //   </>
+    // }
 
     return (
       <div id="loginform">
@@ -58,17 +63,17 @@ class Login extends React.Component {
           </div>
         </div>
 
-        <Link
+        {/* <Link
           style={{
           color: 'inherit',
           textDecoration: 'inherit'
         }}
           className="Nav__link"
-          to="/main">
+          > */}
           <div id="buttonLogin" class="row">
-            <button onClick={this.login(this.state.username)} >Log in</button>
+            <button onClick={()=>{this.login(this.state.username)}} >Log in</button>
           </div>
-        </Link>
+        {/* </Link> */}
       </div>
     )
   }

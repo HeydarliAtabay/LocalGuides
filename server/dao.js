@@ -15,14 +15,21 @@ const createUser = function (row) {
     const onlineStatus = row.onlineStatus;
     const country = row.country;
     const email = row.email;
+    const photo = row.photo;
+    const interests = row.interests;
+    const rating = row.rating;
+    const price = row.price;
+    const city = row.city;
+    const userType = row.userType;
+
 
   
-    return new User(id, name, surname, birthdate, language, gender, onlineStatus, country, email);
+    return new User(id, name, surname, birthdate, language, gender, onlineStatus, country, email, photo, interests, rating, price, city, userType);
   }
 
 exports.getTourist = function (email) {
     return new Promise((resolve, reject) => {
-      const sql = "SELECT * FROM tourist WHERE email = ?"
+      const sql = "SELECT * FROM users WHERE email = ?"
       db.all(sql, [email], (err, rows) => {
           console.log("asdfg");
         if (err) 

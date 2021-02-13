@@ -3,6 +3,17 @@ import {Card, Image, Form, Button} from 'react-bootstrap';
 import './CSS/MainPage.css'
 
 class MainPage extends Component {
+  constructor(props) {
+    super(props);
+    this.setLoc = this.setLoc.bind(this);
+    this.callLoc = this.callLoc.bind(this);
+    this.state = {
+      location: ""
+    }
+  }
+  setLoc=(e)=>{
+    this.setState({location: e})
+     }
 
   callLoc=()=>{
     if (navigator.geolocation) {
@@ -23,29 +34,29 @@ class MainPage extends Component {
                 var response = JSON.parse(xhr.responseText); 
                 var city = response.address.city; 
                 var country = response.address.country; 
-                alert(city +" "+ country); 
+                var res = city.concat(", ", country);
+                // this.setLoc(res);
+                alert(res); 
                 return; 
             } 
-        } 
-  
-
+        }
     }
-    
   }
+
   
   render() {
     return (
       <div id="main">
         <h3 id="mainText">Choose Your Next Destination</h3>
         <div id='card'>
-          <input type='text'></input>
+      <div class="input-group">
+          <input placeholder="City name" type='text'></input>
+          <Button onClick={this.callLoc}>Search</Button>
+          </div>
           <br></br>
-          <br></br>
-          <Button onClick={this.callLoc} block>Find Guides in Current Location</Button>
+          <Button onClick={this.callLoc} block>Near by Guides</Button>
         </div>
 
-
-        
       </div>
     );
   }
