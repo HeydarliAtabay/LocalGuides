@@ -18,7 +18,23 @@ class EditData extends React.Component {
             };
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onChangeInterests = this.onChangeInterests.bind(this);
+        this.clearInput = this.clearInput.bind(this);
+        this.setUser = this.setUser.bind(this);
         this.saveData = this.saveData.bind(this);
+    }
+
+    componentDidMount(){
+            const interests = this.props.user.interests.split(', ');
+            const input = {
+                name : this.props.user.name,
+                surname : this.props.user.surname,
+                country : this.props.user.country,
+                birthdate : this.props.user.birthdate,
+                gender : this.props.user.gender,
+                interests : interests
+            }
+            
+            this.setState({input : input});
     }
 
     onChangeInput(event) {
@@ -42,16 +58,44 @@ class EditData extends React.Component {
         this.setState({input: input});
     }
 
+    clearInput() {
+        const input = {
+            name: '',
+            surname: '',
+            country: '',
+            birthdate: '',
+            gender: '',
+            interests: []
+        }
+        // this.setState({input: input});
+    }
+
+    setUser(){
+        let user = Object.assign(this.props.user);
+        
+        user.country = this.state.input.country; 
+        user.name = this.state.input.name; 
+        user.surname = this.state.input.surname;
+        user.birthdate = this.state.input.birthdate; 
+        user.gender = this.state.input.gender; 
+        user.interests = this.state.input.interests.join(', ');
+
+        this.props.setUser(user);
+    }
+
     saveData (){
-        //modify data after full implementation of login
         const data = {
-                userId: 3,
+                userId: this.props.user.id,
                 header: this.props.editData.header,
                 text: this.state.input
             };
+
         API.editProfile(data)
             .then(() => {
-                console.log('okay saved');
+                this.setUser();
+                this.clearInput();
+                this.props.hide();
+
             }).catch(err => {
                 console.log('error saving profile', err)
             });
@@ -68,14 +112,15 @@ class EditData extends React.Component {
                             placeholder={'name...'}
                             className={'inputs'}
                             name="name"
-                            defaultValue={this.props.editData.data}
+                            defaultValue={this.state.input.name}
                             onChange={(e) => this.onChangeInput(e)}
                         />
                         <input type="text" 
                             placeholder={'surname...'}
+                            defaultValue={this.props.user.surname}
                             className={'inputs'}
                             name="surname"
-                            defaultValue={this.props.editData.data}
+                            defaultValue={this.state.input.surname}
                             onChange={(e) => this.onChangeInput(e)}
                         />
                         </>
@@ -87,7 +132,7 @@ class EditData extends React.Component {
                             placeholder={'country...'}
                             className={'inputs'}
                             name="country"
-                            defaultValue={this.props.editData.data}
+                            defaultValue={this.state.input.country}
                             onChange={(e) => this.onChangeInput(e)}
                         />
                 }
@@ -98,7 +143,7 @@ class EditData extends React.Component {
                             placeholder="Birth date"
                             className={'inputs'}
                             name="birthdate" 
-                            defaultValue={this.props.editData.data}
+                            defaultValue={this.state.input.birthdate}
                             onChange={(e) => this.onChangeInput(e)}
                         />
                 }
@@ -111,6 +156,7 @@ class EditData extends React.Component {
                                         name="gender" 
                                         id='male' 
                                         value="male" 
+                                        checked={this.state.input.gender === 'male' ? true : false}  
                                         onChange={(e) => this.onChangeInput(e)}/>
                                 <label htmlFor='male'>Male</label>
                             </span>
@@ -119,6 +165,7 @@ class EditData extends React.Component {
                                         name="gender" 
                                         id='female' 
                                         value="female" 
+                                        checked={this.state.input.gender === 'female' ? true : false} 
                                         onChange={(e) => this.onChangeInput(e)}/>
                                 <label htmlFor='female'> Female</label>
                             </span>
@@ -129,33 +176,57 @@ class EditData extends React.Component {
                     this.props.editData.header === 'Interests' && 
                         <span className={'interests-container'}>
                             <span>
-                                <input type="checkbox" id="sport" name="Sport" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="sport" 
+                                        name="Sport" 
+                                        checked={this.state.input.interests.some(i => i === 'Sport') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="sport"> Sport</label>
                             </span>
 
                             <span>
-                                <input type="checkbox" id="museum" name="Museum" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="museum" 
+                                        name="Museum" 
+                                        checked={this.state.input.interests.some(i => i === 'Museum') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="museum"> Museum</label>
                                 
                             </span>
                             
                             <span>
-                                <input type="checkbox" id="art" name="Art" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="art" 
+                                        name="Art" 
+                                        checked={this.state.input.interests.some(i => i === 'Art') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="art"> Art</label>
                             </span>
                             
                             <span>
-                                <input type="checkbox" id="music" name="Music" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="music" 
+                                        name="Music" 
+                                        checked={this.state.input.interests.some(i => i === 'Music') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="music"> Music</label>
                             </span>
                             
                             <span>
-                                <input type="checkbox" id="shopping" name="Shopping" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="shopping" 
+                                        name="Shopping" 
+                                        checked={this.state.input.interests.some(i => i === 'Shopping') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="shopping"> Shopping</label>
                             </span>
                             
                             <span>
-                                <input type="checkbox" id="games" name="Games" onChange={(e) => this.onChangeInterests(e)}/>
+                                <input type="checkbox" 
+                                        id="games" 
+                                        name="Games" 
+                                        checked={this.state.input.interests.some(i => i === 'Games') ? true : false}
+                                        onChange={(e) => this.onChangeInterests(e)}/>
                                 <label htmlFor="games"> Games</label>
                             </span>
                         </span>                    
@@ -169,7 +240,7 @@ class EditData extends React.Component {
                     </Button>
                     <Button variant="danger" 
                             className={'btn-edit'}
-                            onClick={() =>this.props.hide()}>
+                            onClick={this.props.hide}>
                         Cancel
                     </Button>
                 </span>

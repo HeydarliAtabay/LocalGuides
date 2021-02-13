@@ -19,14 +19,18 @@ class App extends Component {
       super(props);
       this.state = {
         user: null,
+        chat: null,
         name: ""
       }
     }
 
     setUser=(e)=>{
        this.setState({user: e})
-       this.setState({user: e})
-        }
+    }
+
+    setChat = (e)=>{
+      this.setState({chat: e})
+    }
 
     render() {
     return (
@@ -50,7 +54,7 @@ class App extends Component {
                 display: "flex"
               }}>
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <ProfileUser/>
+                <ProfileUser setUser={this.setUser} user={this.state.user}/>
               </div>
             </Route>
             <Route path="/guides">
@@ -67,14 +71,14 @@ class App extends Component {
                 display: "flex"
               }}>
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <Inbox/>
+                <Inbox user={this.state.user} setChat={this.setChat}/>
               </div>
 
             </Route>
             <Route path="/chat">
               
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <Chat/>
+                <Chat user={this.state.user} chat={this.state.chat}/>
             </Route>
             <Route path="/main">
               <div style={{

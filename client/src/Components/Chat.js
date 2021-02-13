@@ -11,26 +11,47 @@ const backbutton = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24
 
 /////////////////////////////////////////////////////////////////////
 ////////// demo user obj,   will be deleted after real implementation ////////////
-let user = {
-    id : 3,
-    chatId: 'chat-05',
-    userPhoto: undefined,
-    opponentPhoto: undefined, 
-    opponentId: 5,
-    opponentName: 'Lena Mayer'
-}
+// let user = {
+//     id : 3,
+//     chatId: 'chat-05',
+//     userPhoto: undefined,
+//     opponentPhoto: undefined, 
+//     opponentId: 5,
+//     opponentName: 'Lena Mayer'
+// }
 //////////////////////////////////////////////////////////////
 class Chat extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            chat: []
+            chat: [],
+            user: {
+                id : undefined,
+                chatId: '',
+                userPhoto: undefined,
+                opponentPhoto: undefined, 
+                opponentId: undefined,
+                opponentName: ''
+            }
         }
     }
 
     componentDidMount(){
-        // // modify user id for input after login
-        API.getSingleChat(user.chatId)
+
+        const opponentName = this.props.chat.name + ' ' + this.props.chat.surname;
+        const opponentId = this.props.chat.sender === this.props.user.id ? this.props.chat.reciever : this.props.chat.sender; 
+        const user = {
+            id : this.props.user.id,
+            chatId: this.props.chat.chatId,
+            userPhoto: this.props.user.photo,
+            opponentPhoto: this.props.chat.photo, 
+            opponentId: opponentId,
+            opponentName: opponentName
+        }
+
+        this.setState({user: user})
+       
+        API.getSingleChat(this.props.chat.chatId)
             .then((chat) => {
                 this.setState({chat: chat});
             }).catch((err) => {
@@ -44,7 +65,7 @@ class Chat extends React.Component {
 
                 <div className="chat-title">
                     <span>{backbutton}</span>
-                    <label className="partner-name">{ user.opponentName }</label>
+                    <label className="partner-name">{ this.state.user.opponentName }</label>
                 </div>
 
                 <div className="chat-box">
@@ -52,16 +73,16 @@ class Chat extends React.Component {
                         this.state.chat.map( (message, i) => {
                             return (<>
                                 {
-                                    message.sender === user.id ? 
+                                    message.sender === this.state.user.id ? 
                                         <span className={"right-message"} key={i}>
                                             <label>
                                                 { message.message }
                                             </label>
-                                            <img alt="Profile" src={user.userPhoto ? user.userPhoto : photo} />
+                                            <img alt="Profile" src={this.state.user.userPhoto ? this.state.user.userPhoto : photo} />
                                         </span>
                                     :
                                         <span className="left-message" key={i}>
-                                            <img alt="Profile" src={user.opponentPhoto ? user.opponentPhoto : photo} />
+                                            <img alt="Profile" src={this.state.user.opponentPhoto ? this.state.user.opponentPhoto : photo} />
                                             <label>
                                                 {message.message} 
                                             </label>
@@ -71,7 +92,7 @@ class Chat extends React.Component {
                         })
                     }
 
-                    <ChatMessageBox user={user} />
+                    <ChatMessageBox user={this.state.user} />
                     {/* <span className="right-message">
                         <label>
                             Hello...

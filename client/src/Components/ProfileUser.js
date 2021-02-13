@@ -16,14 +16,10 @@ class ProfileUser extends React.Component {
                     header: undefined,
                     data: undefined
                 },
-                profilePhoto: undefined,
-                // selectedPhoto: undefined,
                 showUploadWindow: false
             }
         this.onShowUploadWindow = this.onShowUploadWindow.bind(this);
         this.onHideUploadWindow = this.onHideUploadWindow.bind(this);
-        // this.onPhotoChange = this.onPhotoChange.bind(this);
-        // this.onPhotoUpload = this.onPhotoUpload.bind(this);
         this.catchEdit = this.catchEdit.bind(this);
         this.hideEditBox = this.hideEditBox.bind(this);
     }
@@ -37,29 +33,10 @@ class ProfileUser extends React.Component {
     }
 
     handlePhoto = (src) =>{
-        this.setState({profilePhoto: src});
+        let user = Object.assign(this.props.user);
+        user.photo = src;
+        this.props.setUser(user);
     }
-
-    // onPhotoChange (e){
-    //     this.setState({selectedPhoto: e.target.files[0]});
-    // }
-
-    // onPhotoUpload (){
-    //     //create obj of form data
-    //     const formData = new FormData();
-
-    //     //upload photo to form data
-    //     formData.append(
-    //             'photo',
-    //             this.state.selectedPhoto,
-    //             this.state.selectedPhoto.name
-    //         );
-
-    //     console.log('obj: ',formData);
-    //     console.log('name: ', this.state.selectedPhoto.name);
-    //     console.log('type: ', this.state.selectedPhoto.type);
-
-    // }
 
     catchEdit (header, data) {
         const editdata = {
@@ -82,7 +59,7 @@ class ProfileUser extends React.Component {
             <div className="profile">
                 <div className="profile-photo">
                     <img alt="Profile" 
-                        src={this.state.profilePhoto !== undefined ? this.state.profilePhoto : photo} />
+                        src={this.props.user.photo || photo} />
                     <label className={"camera"}
                             onClick={this.onShowUploadWindow} >
                         {camera}
@@ -90,13 +67,14 @@ class ProfileUser extends React.Component {
 
                     <PhotoUploadWindow show={this.state.showUploadWindow}
                                         onHide={()=>this.onHideUploadWindow()}
+                                        userId={this.props.user.id}
                                         handlePhoto={this.handlePhoto}
                         />
                     {
-                        this.state.editData.header === 'Name & Surname' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        this.state.editData.header === 'Name & Surname' ? <EditData editData={this.state.editData} hide={this.hideEditBox} user={this.props.user} setUser={this.props.setUser}/> 
                         :
                         <p>
-                            <i>Name Surname </i>
+                            <i>{this.props.user.name + ' ' + this.props.user.surname} </i>
                             <label onClick={() => this.catchEdit('Name & Surname')}>{edit}</label>
                         </p>
                     }
@@ -105,12 +83,12 @@ class ProfileUser extends React.Component {
                 <div className="profile-data">
                     
                     {
-                        this.state.editData.header === 'Country' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        this.state.editData.header === 'Country' ? <EditData editData={this.state.editData} hide={this.hideEditBox} user={this.props.user} setUser={this.props.setUser}/> 
                         :
                         <div className={"profile-data-item"}>
                             <label><b><i>Country</i></b></label>
                             <input type="text" 
-                                placeholder="Hungary"
+                                placeholder={this.props.user.country}
                                 disabled={true}
                                 />
                             <span onClick={() => this.catchEdit('Country')}>
@@ -120,13 +98,13 @@ class ProfileUser extends React.Component {
                     }
 
                     {
-                        this.state.editData.header === 'Birth date' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        this.state.editData.header === 'Birth date' ? <EditData editData={this.state.editData} hide={this.hideEditBox} user={this.props.user} setUser={this.props.setUser}/> 
                         :
                         <div className={"profile-data-item"}>
                             <label><b><i>Birth date</i></b></label>
                             <input type="date" 
                                 placeholder="Birth date"
-                                defaultValue="1996-04-24"
+                                defaultValue={this.props.user.birthdate}
                                 disabled={true}
                                 />
                             <span onClick={() => this.catchEdit('Birth date')}>
@@ -136,12 +114,12 @@ class ProfileUser extends React.Component {
                     }
                     
                     {
-                        this.state.editData.header === 'Gender' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        this.state.editData.header === 'Gender' ? <EditData editData={this.state.editData} hide={this.hideEditBox} user={this.props.user} setUser={this.props.setUser}/> 
                         :
                         <div className={"profile-data-item"}>
                             <label><b><i>Gender</i></b></label>
                             <input type="text" 
-                                placeholder="Male"
+                                placeholder={this.props.user.gender}
                                 disabled={true}
                                 />
                             <span onClick={() => this.catchEdit('Gender')}>
@@ -151,7 +129,7 @@ class ProfileUser extends React.Component {
                     }
                     
                     {
-                        this.state.editData.header === 'Interests' ? <EditData editData={this.state.editData} hide={this.hideEditBox}/> 
+                        this.state.editData.header === 'Interests' ? <EditData editData={this.state.editData} hide={this.hideEditBox} user={this.props.user} setUser={this.props.setUser}/> 
                         :
                         <div className={"profile-data-item"}>
                             <label><b><i>Interests</i></b></label>
@@ -159,7 +137,7 @@ class ProfileUser extends React.Component {
                                         cols={30} rows={2}
                                         disabled={true}
                             >
-                                &nbsp; sport , &#13;&#10; music
+                                {this.props.user.interests}
                                 
                             </textarea>
                             <span id="interest" onClick={() => this.catchEdit('Interests')}>

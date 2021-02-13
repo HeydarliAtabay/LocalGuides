@@ -37,14 +37,14 @@ class PhotoUploadWindow extends React.Component {
                 this.state.selectedPhoto.name
             );
 
-        API.uploadPhoto(3, formData)
-        .then((res) => {
-            this.props.handlePhoto(res.url);
-            this.props.onHide();
-            console.log('url: ' + res.url);
-        }).catch(() => {
-            console.log('upload error on react')
-        });
+        API.uploadPhoto(this.props.userId, formData)
+            .then((res) => {
+                this.props.handlePhoto(res.url);
+                this.props.onHide();
+                
+            }).catch(() => {
+                console.log('upload error on react')
+            });
     }
 
     render () {
