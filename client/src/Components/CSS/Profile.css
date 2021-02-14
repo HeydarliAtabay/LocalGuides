@@ -92,6 +92,30 @@
     bottom: 3rem
 }
 
+.rating {
+    /* border: 1px solid; */
+    text-align: left;
+    padding-left: 1rem;
+    border-radius: 10px 10px 10px 10px;
+    background:rgba(252, 252, 252, 0.336)
+}
+
+.btn-guide {
+    width: 15rem;
+    height: 3rem;
+
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.online {
+    font-size: 1rem;
+    color: transparent;
+    border-radius: 50%;
+    background-color: rgb(24, 172, 10);
+}
 
 /* --------------------------------------- Mobile view ------------------------------------------------- */
 

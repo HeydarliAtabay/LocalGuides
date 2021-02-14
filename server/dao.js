@@ -123,3 +123,48 @@ exports.getChat = function(chatId){
     });
   })
 }
+
+exports.storeMessage = function(message){
+
+  return new Promise((resolve, reject) => {
+    const query = 'INSERT INTO inbox (sender, reciever, message, date, chatId) VALUES(?, ?, ?, DATETIME("now"), ?)';
+    
+    db.run(query, [message.sender, message.reciever, message.body, message.chatId], function(err, row) {
+            if(err) {
+              reject(err);
+            }
+            else {
+              resolve(null);
+            }
+    });
+  })
+}
+
+exports.getGuide = function(id){
+
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM users WHERE id = ? AND "user-type" = "guide"';
+    
+    db.get(query, [id], function(err, row) {
+            if(err) {
+              reject(err);
+            } 
+            else {
+
+                // get languages
+                const sql = "SELECT l.name FROM languages l, guideLanguage g WHERE g.language = l.id AND g.guide = ?"
+                db.all(sql, [id], function(err, rows) {
+                  if(err) {
+                    reject(err);
+                  } 
+                  else {
+                    row.language = rows.map(function(elem){
+                        return elem.name;
+                      });
+                    resolve(row);
+                  }
+                });
+            }
+    });
+  })
+}

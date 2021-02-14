@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 const SOCKET_SERVER_URL = "http://192.168.1.123:3000";
 
-const useChat = (chatId, user) => {
+const useChat = (chatId) => {
   const [messages, setMessages] = useState([]);
   const socketRef = useRef();
 
@@ -17,7 +17,6 @@ const useChat = (chatId, user) => {
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
-        // ownedByCurrentUser: message.senderId === user.id
 
       };
       setMessages((messages) => [...messages, incomingMessage]);
@@ -32,8 +31,9 @@ const useChat = (chatId, user) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
-      // senderId: user.id,
-      user: user
+      sender: user.id,
+      reciever: user.opponentId,
+      chatId: user.chatId,
     });
   };
 

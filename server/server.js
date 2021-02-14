@@ -138,11 +138,24 @@ app.get('/api/get-chat/:chatId', (req,res) => {
     dao.getChat(id)
         .then((chat) => {
             res.status(200).json(chat)
+
         }).catch(err => {
             res.status(500).send({err: err});
         })
 })
 
+app.get('/api/get-guide/:id', (req,res) => {
+
+    const id = req.params.id;
+
+    dao.getGuide(id)
+        .then((guide) => {
+            res.status(200).json(guide)
+
+        }).catch(err => {
+            res.status(500).send({err: err});
+        })
+})
 
 
 /// socket///
@@ -158,8 +171,16 @@ io.on("connection", (socket) => {
 
   // Listen for new messages
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-    //   console.log('dta', data); 
-    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+    
+    //store message into Database
+    dao.storeMessage(data)
+        .then((lastID) => {
+            io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+            // res.status(200).json(lastID)
+        }).catch(err => {
+            // res.status(500).send({err: err});
+        }) 
+    
   });
 
   // Leave the room if the user closes the socket
@@ -179,5 +200,5 @@ http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://19
 //// then decommment below line (http.listen...)
 // http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
 /// ******************************************************
-/// and chnage proxy to 'http://localhost:3001' in package.json of client side
+/// and chnage proxy to 'http://localhost:3001' in package.json and useChat.js of client side
 //************************************************************************************ */

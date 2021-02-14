@@ -79,6 +79,17 @@ async function getSingleChat (chatId){
     }
 }
 
-const userMethods = {userLogin, uploadPhoto, editProfile, getChats, getSingleChat}
+async function getGuide (id){
+    let response = await fetch('/api/get-guide/' + id);
+    let result = await response.json();
+
+    if(response.ok){
+        return result;
+    } else{
+        return null;
+    }
+}
+
+const userMethods = {userLogin, uploadPhoto, editProfile, getChats, getSingleChat, getGuide};
 
 export default userMethods;

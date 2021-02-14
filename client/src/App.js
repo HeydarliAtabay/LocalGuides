@@ -3,6 +3,7 @@ import Login from './Components/Login'
 import React, {Component} from 'react';
 import Sidebar from './Components/Sidebar';
 import ProfileUser from './Components/ProfileUser';
+import ProfileGuide from './Components/ProfileGuide';
 
 import Inbox from './Components/Inbox';
 import Chat from './Components/Chat';
@@ -19,6 +20,7 @@ class App extends Component {
       super(props);
       this.state = {
         user: null,
+        guide: undefined,
         chat: null,
         name: ""
       }
@@ -27,6 +29,10 @@ class App extends Component {
     setUser=(e)=>{
        this.setState({user: e})
     }
+
+    setGuide=(e)=>{
+      this.setState({guide: e})
+   }
 
     setChat = (e)=>{
       this.setState({chat: e})
@@ -66,6 +72,17 @@ class App extends Component {
               </div>
 
             </Route>
+
+            <Route path="/guide">
+              <div style={{
+                display: "flex"
+              }}>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                <ProfileGuide guide={this.state.guide}/>
+              </div>
+
+            </Route>
+
             <Route path="/inbox">
               
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
