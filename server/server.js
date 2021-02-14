@@ -8,12 +8,19 @@ const uuidv4 = require('uuid/v4');
 const router = express.Router();
 const cors = require('cors');
 
+//for socket io
+const app = require('express')();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+// socket io ^^^
+
+
 const DIR = './profile-photos/';
 
 
 const PORT = 3001;
 
-app = new express();
+// app = new express();
 
 // middleware
 
@@ -140,39 +147,37 @@ app.get('/api/get-chat/:chatId', (req,res) => {
 
 /// socket///
 
-// const server = require("http").createServer();
-// const io = require("socket.io")(server, {
-//   cors: {
-//     origin: "*",
-//   },
-// });
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
-// const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+io.on("connection", (socket) => {
+  console.log(`Client ${socket.id} connected`);
 
-// io.on("connection", (socket) => {
-//   console.log(`Client ${socket.id} connected`);
+  // Join a conversation
+  const { roomId } = socket.handshake.query;
+  socket.join(roomId);
 
-//   // Join a conversation
-//   const { roomId } = socket.handshake.query;
-//   socket.join(roomId);
+  // Listen for new messages
+  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+    //   console.log('dta', data); 
+    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+  });
 
-//   // Listen for new messages
-//   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-//       console.log('dta', data); 
-//     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
-//   });
+  // Leave the room if the user closes the socket
+  socket.on("disconnect", () => {
+    console.log(`Client ${socket.id} diconnected`);
+    socket.leave(roomId);
+  });
+});
 
-//   // Leave the room if the user closes the socket
-//   socket.on("disconnect", () => {
-//     console.log(`Client ${socket.id} diconnected`);
-//     socket.leave(roomId);
-//   });
-// });
-
-
-// server.listen(PORT, () => {
-//     console.log(`Listening on port ${PORT}`);
-//   });
 ///// end socket////////////
 
-app.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
+///////*********************************************************
+//****************************************************** */ */
+//// In case of error during run server 
+//// comment below line (http.listen...)
+http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
+//// then decommment below line (http.listen...)
+// http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
+/// ******************************************************
+/// and chnage proxy to 'http://localhost:3001' in package.json of client side
+//************************************************************************************ */

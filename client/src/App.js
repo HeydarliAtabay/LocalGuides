@@ -67,12 +67,10 @@ class App extends Component {
 
             </Route>
             <Route path="/inbox">
-              <div style={{
-                display: "flex"
-              }}>
+              
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Inbox user={this.state.user} setChat={this.setChat}/>
-              </div>
+              
 
             </Route>
             <Route path="/chat">
