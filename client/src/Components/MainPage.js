@@ -9,8 +9,6 @@ class MainPage extends Component {
 
   constructor(props) {
     super(props);
-    // this.setLoc = this.setLoc.bind(this);
-    // this.callLoc = this.callLoc.bind(this);
     this.state = {
       location: ""
     }
@@ -18,13 +16,66 @@ class MainPage extends Component {
   componentDidMount(){
     this.callLoc();
   }
+
+/////////////////////////
+
+handleScriptLoad = () => {
+  // Declare Options For Autocomplete
+  const options = {
+    types: ['(cities)'],
+  };
+
+  // Initialize Google Autocomplete
+  /*global google*/ // To disable any eslint 'google not defined' errors
+  this.autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById('autocomplete'),
+    options,
+  );
+  this.autocomplete.setFields(['address_components', 'formatted_address']);
+
+  // Fire Event when a suggested name is selected
+  this.autocomplete.addListener('place_changed', this.handlePlaceSelect);
+}
+
+handlePlaceSelect = () => {
+
+  // Extract City From Address Object
+  const addressObject = this.autocomplete.getPlace();
+  const address = addressObject.address_components;
+
+  // Check if address is valid
+  if (address) {
+    // Set State
+    this.setState(
+      {
+        city: address[0].long_name,
+        query: addressObject.formatted_address,
+        location: addressObject.formatted_address
+        
+      }
+    );
+  }
+}
+
+
+////////////////
+
+
+
+
+  handleChangeSearch=(event)=> {
+    // console.log(JSON.stringify(event.target)+" event");
+    this.setState({location: event.target.value});
+  }
+
   setLoc=(e)=>{
     this.setState({location: e});
-    alert(e);
-
+    // alert(e);
      }
-
-  
+     searchLoc=(e)=>{
+      this.setState({location: e});
+      // alert(e);
+       }
 
   callLoc=()=>{
     if (navigator.geolocation) {
@@ -64,8 +115,8 @@ class MainPage extends Component {
         <h3 id="mainText">Choose Your Next Destination</h3>
         <div id='card'>
       <div class="input-group">
-          <Search location={this.state.location}/>
-          <Button onClick={this.callLoc}>Search</Button>
+          <Search handlePlaceSelect={this.handlePlaceSelect} handleScriptLoad={this.handleScriptLoad} handleChangeSearch={this.handleChangeSearch} location={this.state.location}/>
+          <Button onClick={this.searchLoc}>Search</Button>
           </div>
           <br></br>
           <Button onClick={()=>this.callLoc()} block>Near by Guides</Button>

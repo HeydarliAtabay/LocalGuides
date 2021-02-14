@@ -14,6 +14,7 @@ import {Switch} from 'react-router';
 import {BrowserRouter, Redirect, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom';
 import MainPage from './Components/MainPage';
+import Bottombar from './Components/Bottombar';
 
 class App extends Component {
     constructor(props) {
@@ -102,6 +103,8 @@ class App extends Component {
                <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <MainPage user={this.state.user}/>
               </div>
+              <Bottombar></Bottombar>
+
             </Route>
           </Switch>
         </BrowserRouter>
