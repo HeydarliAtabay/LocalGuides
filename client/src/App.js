@@ -48,94 +48,86 @@ class App extends Component {
 
     render() {
     return (
-      <div>
+     
         <BrowserRouter>
-        {/* <Sidebar/> */}
-        {this.state.user && 
-        <>
-        <Redirect to='/main'/>
-        </>
+        {
+          this.state.user && <Redirect to='/main'/>
         }
-        {/* {this.state.user && 
-        <Sidebar setUser={this.setUser}/>
-    } */}
+        {
+          // this.state.user && 
+          <Sidebar setUser={this.setUser} user={this.state.user}/>
+        }
           <Switch>
             <Route  exact path="/">
               <Login setUser={this.setUser}/>
             </Route>
             <Route path="/user">
-              <div style={{
-                display: "flex"
-              }}>
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+              
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <ProfileUser setUser={this.setUser} user={this.state.user}/>
-              </div>
+             
             </Route>
             <Route path="/guides">
               
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <GuideList city={this.state.city} setGuide={this.setGuide}/>
 
             </Route>
 
             <Route path="/filter">
-              <div style={{
-                display: "flex"
-              }}>
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+             
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <Filter/>
-              </div>
 
             </Route>
 
             <Route path="/create">
-              <div style={{
-                display: "flex"
-              }}>
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+              
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <CreateTrip/>
-              </div>
+            
 
             </Route>
 
             <Route path="/guide">
-              <div style={{
-                display: "flex"
-              }}>
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+            
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <ProfileGuide guide={this.state.guide} user={this.state.user} setChat={this.setChat}/>
-              </div>
-
-
+             
             </Route>
 
             
 
             <Route path="/inbox">
               
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <Inbox user={this.state.user} setChat={this.setChat}/>
               
 
             </Route>
             <Route path="/chat">
               
-                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <Chat user={this.state.user} chat={this.state.chat}/>
             </Route>
             <Route path="/main">
-              <div style={{
-                display: "flex"
-              }}>
-               <Sidebar setUser={this.setUser} user={this.state.user}/>
+            
+               {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <MainPage user={this.state.user} setCity={this.setCity}/>
-              </div>
-              <Bottombar></Bottombar>
+          
+                {
+                  // this.state.user && 
+                  <div id="bottom-navbar">
+                    <Bottombar/>
+                  </div>
+                  
+                }
+              
 
             </Route>
           </Switch>
         </BrowserRouter>
-      </div>
+     
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import './CSS/Bottombar.css'
 import Jumbotron from "../assets/main.png";
 import Jumbotron1 from "../assets/inbox.png";
@@ -13,72 +13,33 @@ import { Link } from "react-router-dom";
 function Bottombar(props) {
   return ( <> <div class="navbar">
 
-    <div id="button">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
+    <div className="button ml-20">
+    <Link className="Nav__link" to="/main">
       <Button id="btn" variant="outline-dark" block>
-        <img style={{
-          height: "2rem",
-          float: "left",
-        }} src={Jumbotron} alt="my image" 
-      />
-        {/* <h4 id="text">Home</h4> */}
+        <img src={Jumbotron} alt="my image" />
       </Button>
       </Link>
     </div>
-    <div id="button">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/inbox">
+    <div className="button">
+    <Link  className="Nav__link" to="/inbox">
     <Button id="btn" variant="outline-dark" block>
-        <img style={{
-          height: "2rem",
-          float: "left",
-          margin: "3px"
-        }} src={Jumbotron1} alt="my image" 
-        // onClick={this.routeAddCor }}
-      />
-        {/* <h4 id="text">Inbox</h4> */}
+        <img src={Jumbotron1} alt="my image" />
       </Button>
       </Link>
     </div>
 
-    <div id="button">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/user">
+    <div className="button">
+    <Link className="Nav__link" to="/user">
     <Button id="btn" variant="outline-dark" block>
-        <img style={{
-          height: "2rem",
-          float: "left",
-          margin: "3px"
-        }} src={Jumbotron2} alt="my image" 
-        // onClick={this.routeAddCor }}
-      />
-        {/* <h4 id="text">Profile</h4> */}
+        <img src={Jumbotron2} alt="my image" />
       </Button>
       </Link>
     </div>
 
-    <div id="button">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
+    <div className="button">
+    <Link className="Nav__link" to="/main">
       <Button id="btn" variant="outline-dark" block>
-        <img style={{
-          height: "2rem",
-          float: "left",
-          margin: "3px"
-        }} src={Jumbotron3} alt="my image" 
-        // onClick={this.routeAddCor }}
-      />
-        {/* <h4 id="text">My Trips</h4> */}
-      </Button>
-      </Link>
-    </div>
-
-    <div id="buttonLogout">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/">
-      <Button 
-      onClick={()=>props.setUser(null)} id="btn"  variant="outline-dark" >
-        <img style={{
-          height: "1.3rem",
-          float: "right",
-        }} src={Jumbotron5} alt="my image" 
-      />
+        <img src={Jumbotron3} alt="my image" />
       </Button>
       </Link>
     </div>

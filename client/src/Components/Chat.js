@@ -4,6 +4,7 @@ import ChatMessageBox from './ChatMessageBox.js';
 import './CSS/Chat.css';
 import { Button } from 'react-bootstrap';
 import photo from '../assets/profile.jpg';
+import { Link } from 'react-router-dom';
 
 const backbutton = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
 
@@ -51,7 +52,9 @@ class Chat extends React.Component {
             <div className="chat-page">
 
                 <div className="chat-title">
-                    <span>{backbutton}</span>
+                    <span>
+                        <Link to="/inbox" >{backbutton}</Link>
+                    </span>
                     <label className="partner-name">{ this.state.user.opponentName }</label>
                 </div>
 
