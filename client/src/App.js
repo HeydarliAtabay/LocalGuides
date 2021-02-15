@@ -10,6 +10,7 @@ import Chat from './Components/Chat';
 
 import GuideList from './Components/GuideList'
 import Filter from './Components/Filter'
+import CreateTrip from './Components/CreateTrip'
 
 import {Switch} from 'react-router';
 import {BrowserRouter, Redirect, Route} from 'react-router-dom'
@@ -81,6 +82,16 @@ class App extends Component {
               }}>
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
                 <Filter/>
+              </div>
+
+            </Route>
+
+            <Route path="/create">
+              <div style={{
+                display: "flex"
+              }}>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                <CreateTrip/>
               </div>
 
             </Route>

@@ -1,0 +1,7 @@
+.requestcont {
+  padding: 5rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
