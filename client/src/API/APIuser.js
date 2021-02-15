@@ -90,6 +90,17 @@ async function getGuide (id){
     }
 }
 
-const userMethods = {userLogin, uploadPhoto, editProfile, getChats, getSingleChat, getGuide};
+async function getGuideList (city){
+    let response = await fetch('/api/get-guide-list/' + city);
+    let result = await response.json();
+
+    if(response.ok){
+        return result;
+    } else{
+        return null;
+    }
+}
+
+const userMethods = {userLogin, uploadPhoto, editProfile, getChats, getSingleChat, getGuide, getGuideList};
 
 export default userMethods;

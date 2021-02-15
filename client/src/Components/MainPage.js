@@ -3,6 +3,7 @@ import {Card, Image, Form, Button} from 'react-bootstrap';
 import './CSS/MainPage.css'
 import Search from './Search';
 import Script from 'react-load-script';
+import { Link } from 'react-router-dom';
 
 class MainPage extends Component {
 
@@ -116,7 +117,11 @@ handlePlaceSelect = () => {
         <div id='card'>
       <div class="input-group">
           <Search handlePlaceSelect={this.handlePlaceSelect} handleScriptLoad={this.handleScriptLoad} handleChangeSearch={this.handleChangeSearch} location={this.state.location}/>
-          <Button onClick={this.searchLoc}>Search</Button>
+          
+          <Link to="/guides" >
+              <Button onClick={this.searchLoc}>Search</Button>
+          </Link>
+          
           </div>
           <br></br>
           <Button onClick={()=>this.callLoc()} block>Near by Guides</Button>

@@ -2,6 +2,7 @@ import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import './CSS/GuideItem.css'
 import {FaStar} from 'react-icons/fa'
+import photo from '../assets/profile.jpg';
 
 
 
@@ -9,14 +10,14 @@ import {FaStar} from 'react-icons/fa'
 // import photo from '../assets/profile.jpg'
 
 
-export default function GuideItem(props) {
+export default function   GuideItem(props) {
   const price=props.price
   const rating=props.rating
   const less=5-rating
     return (
         <div className="guideitem">
            <div className="itemheader"> 
-           <img alt="Profile" src={props.photo} />
+           <img alt="Profile" src={props.photo ? props.photo : photo} />
          </div>
         <div className="username"> <h3 >{props.username}</h3> </div>
          <div className="languages">

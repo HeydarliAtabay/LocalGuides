@@ -112,9 +112,9 @@ export default class Filter extends Component {
             <h3 style={{marginLeft:20}}>Gender</h3>
             <div className="langcheck">
             <Form>
-            <Form.Check inline label="Male"  type='radio'/>
-            <Form.Check inline label="Female" type='radio'/>
-             <Form.Check inline label="All" type='radio'/>
+            <Form.Check inline label="Male"  type='radio' name="gender"/>
+            <Form.Check inline label="Female" type='radio' name="gender"/>
+             <Form.Check inline label="All" type='radio' name="gender"/>
       </Form>
       </div>
             </div>

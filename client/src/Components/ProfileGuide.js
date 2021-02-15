@@ -6,6 +6,7 @@ import './CSS/Profile.css';
 import photo from '../assets/profile.jpg';
 import {FaStar} from 'react-icons/fa'
 import { Button, Badge } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 // const camera = <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M5 5h-3v-1h3v1zm8 5c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3zm11-4v15h-24v-15h5.93c.669 0 1.293-.334 1.664-.891l1.406-2.109h8l1.406 2.109c.371.557.995.891 1.664.891h3.93zm-19 4c0-.552-.447-1-1-1-.553 0-1 .448-1 1s.447 1 1 1c.553 0 1-.448 1-1zm13 3c0-2.761-2.239-5-5-5s-5 2.239-5 5 2.239 5 5 5 5-2.239 5-5z"/></svg>;
 // const edit = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1.438 16.872l-1.438 7.128 7.127-1.438 12.642-12.64-5.69-5.69-12.641 12.64zm2.271 2.253l-.85-.849 11.141-11.125.849.849-11.14 11.125zm20.291-13.436l-2.817 2.819-5.69-5.691 2.816-2.817 5.691 5.689z"/></svg>;
@@ -19,6 +20,7 @@ class ProfileGuide extends React.Component {
         super(props);
         this.state = {
                 guide: {
+                    id: undefined,
                     photo: undefined,
                     rating: 0,
                     name: undefined,
@@ -32,8 +34,8 @@ class ProfileGuide extends React.Component {
 
     componentDidMount(){
 
-        // modify id to this.props.guide
-        API.getGuide(5)
+        
+        API.getGuide(this.props.guide)
             .then((guide) => {
                 guide.price = guide.price + ' €/hr';
 
@@ -48,6 +50,20 @@ class ProfileGuide extends React.Component {
             }).catch((error) => {
                 console.error(error);
             })
+    }
+
+    contact() {
+        const chat = {
+            chatId: 'chat-' + this.state.guide.id,
+            opponentPhoto: this.state.guide.photo,
+            opponentId: this.state.guide.id,
+            name: this.state.guide.name,
+            surname: this.state.guide.surname,
+            sender: this.props.user.id,
+            reciever: this.state.guide.id
+        }
+
+        this.props.setChat(chat);
     }
     
  
@@ -64,7 +80,10 @@ class ProfileGuide extends React.Component {
                         </p>
 
                         <p>
-                            <Button variant="light" className={"btn-guide"}>{contact} Contact</Button>
+                            <Link to="/chat" >
+                                <Button variant="light" className={"btn-guide"} onClick={() =>this.contact()}>{contact} Contact</Button>
+                            </Link>
+                            
                             <Button variant="light" className={"btn-guide ml-20"}>{select} Select</Button>
                         </p>
                     

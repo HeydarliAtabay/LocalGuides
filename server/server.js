@@ -157,6 +157,19 @@ app.get('/api/get-guide/:id', (req,res) => {
         })
 })
 
+app.get('/api/get-guide-list/:city', (req,res) => {
+
+    const city = req.params.city;
+
+    dao.getGuideList(city)
+        .then((guides) => {
+            res.status(200).json(guides)
+
+        }).catch(err => {
+            res.status(500).send({err: err});
+        })
+})
+
 
 /// socket///
 

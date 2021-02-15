@@ -168,3 +168,19 @@ exports.getGuide = function(id){
     });
   })
 }
+
+exports.getGuideList = function(city){
+
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM users WHERE city = ? AND "user-type" = "guide"';
+    
+    db.all(query, [city], function(err, rows) {
+            if(err) {
+              reject(err);
+            }
+            else {
+              resolve(rows);
+            }
+    });
+  })
+}

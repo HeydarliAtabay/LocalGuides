@@ -25,6 +25,7 @@ class App extends Component {
         user: null,
         guide: undefined,
         chat: null,
+        city: null,
         name: ""
       }
     }
@@ -39,6 +40,10 @@ class App extends Component {
 
     setChat = (e)=>{
       this.setState({chat: e})
+    }
+
+    setCity = (e) =>{
+      this.setState({city: e})
     }
 
     render() {
@@ -67,12 +72,9 @@ class App extends Component {
               </div>
             </Route>
             <Route path="/guides">
-              <div style={{
-                display: "flex"
-              }}>
+              
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <GuideList/>
-              </div>
+                <GuideList city={this.state.city} setGuide={this.setGuide}/>
 
             </Route>
 
@@ -101,7 +103,7 @@ class App extends Component {
                 display: "flex"
               }}>
                 <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <ProfileGuide guide={this.state.guide}/>
+                <ProfileGuide guide={this.state.guide} user={this.state.user} setChat={this.setChat}/>
               </div>
 
 
@@ -126,7 +128,7 @@ class App extends Component {
                 display: "flex"
               }}>
                <Sidebar setUser={this.setUser} user={this.state.user}/>
-                <MainPage user={this.state.user}/>
+                <MainPage user={this.state.user} setCity={this.setCity}/>
               </div>
               <Bottombar></Bottombar>
 
