@@ -39,7 +39,7 @@ class MyTrips extends React.Component {
                                         <br></br>
                                         City: {trip.City} 
                                         <br></br>
-                                        Guide: {trip.Guide}
+                                        Guide: {trip.name} {trip.surname}
                                         <br></br>
                                         Status: {trip.Status}
                                         <br></br>
