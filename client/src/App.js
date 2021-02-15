@@ -9,6 +9,7 @@ import Inbox from './Components/Inbox';
 import Chat from './Components/Chat';
 
 import GuideList from './Components/GuideList'
+import Filter from './Components/Filter'
 
 import {Switch} from 'react-router';
 import {BrowserRouter, Redirect, Route} from 'react-router-dom'
@@ -74,6 +75,16 @@ class App extends Component {
 
             </Route>
 
+            <Route path="/filter">
+              <div style={{
+                display: "flex"
+              }}>
+                <Sidebar setUser={this.setUser} user={this.state.user}/>
+                <Filter/>
+              </div>
+
+            </Route>
+
             <Route path="/guide">
               <div style={{
                 display: "flex"
@@ -82,7 +93,10 @@ class App extends Component {
                 <ProfileGuide guide={this.state.guide}/>
               </div>
 
+
             </Route>
+
+            
 
             <Route path="/inbox">
               
