@@ -101,6 +101,17 @@ async function getGuideList (city){
     }
 }
 
-const userMethods = {userLogin, uploadPhoto, editProfile, getChats, getSingleChat, getGuide, getGuideList};
+async function getMyTrips (userId){
+    let response = await fetch('/api/get-my-trips/' + userId);
+    let result = await response.json();
+
+    if(response.ok){
+        return result;
+    } else{
+        return [];
+    }
+}
+
+const userMethods = {userLogin, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
 
 export default userMethods;

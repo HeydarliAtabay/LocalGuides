@@ -61,7 +61,7 @@ function Sidebar(props) {
     </div>
 
     <div id="button">
-    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/main">
+    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/trips">
       <Button id="btn" variant="outline-dark" block>
         <img style={{
           height: "2rem",

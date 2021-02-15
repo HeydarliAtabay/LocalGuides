@@ -16,6 +16,7 @@ import {Switch} from 'react-router';
 import {BrowserRouter, Redirect, Route} from 'react-router-dom'
 import {withRouter} from 'react-router-dom';
 import MainPage from './Components/MainPage';
+import MyTrips from './Components/MyTrips';
 import Bottombar from './Components/Bottombar';
 
 class App extends Component {
@@ -122,8 +123,20 @@ class App extends Component {
                   </div>
                   
                 }
-              
+            </Route>
 
+            <Route path="/trips">
+            
+               {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
+                <MyTrips user={this.state.user} setCity={this.setCity}/>
+          
+                {
+                  // this.state.user && 
+                  <div id="bottom-navbar">
+                    <Bottombar/>
+                  </div>
+                  
+                }
             </Route>
           </Switch>
         </BrowserRouter>
