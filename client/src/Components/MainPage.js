@@ -47,6 +47,7 @@ handlePlaceSelect = () => {
   // Check if address is valid
   if (address) {
     // Set State
+    this.props.setCity(address[0].long_name)
     this.setState(
       {
         city: address[0].long_name,

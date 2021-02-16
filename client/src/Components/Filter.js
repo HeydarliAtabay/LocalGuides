@@ -4,12 +4,23 @@ import GuideItem from './GuideItem'
 import "./CSS/Filter.css"
 import { Button,FormCheck,Form } from 'react-bootstrap'
 import Slider from '@material-ui/core/Slider';
+import API from '../API/APIuser.js';
 
 
 export default class Filter extends Component {
     static propTypes = {
         prop: PropTypes
     }
+    constructor(props) {
+      super(props);
+      this.state = {
+          price: null,
+
+      }
+  }
+
+  
+
 
     render() {
         const pricemarks = [
@@ -69,7 +80,7 @@ export default class Filter extends Component {
             <h3 style={{marginLeft:20}}>Price range</h3>
  <div className="slider">
  <Slider 
-  defaultValue={[15,25]}
+  defaultValue={[15,35]}
   aria-labelledby="discrete-slider-custom"
   step={1}
   max={50}
@@ -132,7 +143,7 @@ export default class Filter extends Component {
             </div>
 
             <div className="buttonapp">
-                <Button variant="success" size="lg"> Apply</Button>
+                <Button onClick={()=>this.props.setFilter()} variant="success" size="lg"> Apply</Button>
             </div>
                
                

@@ -227,3 +227,18 @@ exports.acceptRequest = function(user, guide){
     });
   })
 }
+
+exports.filterRequest = function(price, rating){
+return new Promise((resolve, reject) => {
+  const query = 'SELECT * FROM users WHERE price<=? and rating>=? ORDER By rating DESC';
+  db.all(query, [price, rating], function(err, rows) {
+          if(err) {
+            reject(err);
+          } else if (rows.length === 0) 
+            resolve(undefined);
+          else {
+            resolve(rows);
+          }
+  });
+})
+}
