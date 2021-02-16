@@ -83,8 +83,9 @@ class ProfileGuide extends React.Component {
                             <Link to="/chat" >
                                 <Button variant="light" className={"btn-guide"} onClick={() =>this.contact()}>{contact} Contact</Button>
                             </Link>
-                            
+                            <Link to="/create">
                             <Button variant="light" className={"btn-guide ml-20"}>{select} Select</Button>
+                            </Link>
                         </p>
                     
                 </div>
