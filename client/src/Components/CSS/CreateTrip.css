@@ -63,7 +63,7 @@
   }
 
   .btn-x{
-    position: fixed;
+    position: absolute;
     right: 0.5rem;
     top: 1.2rem;
   }
