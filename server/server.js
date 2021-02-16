@@ -198,6 +198,18 @@ app.post('/api/sendTripRequest/', (req, res) => {
   });
 
 
+  app.post('/api/acceptRequest/', (req, res) => {
+    const user = req.body.user;
+    const guide=req.body.guide
+
+    dao.acceptRequest(user, guide).then( (ok) => {
+      res.status(200).end();
+    }).catch( error => {
+      res.status(502).json(error);
+    });
+  });
+
+
 
 /// socket///
 

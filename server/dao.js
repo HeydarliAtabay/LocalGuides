@@ -214,3 +214,16 @@ exports.sendTripRequest = function(StartDate, EndDate,Guide,City,TouristCount,St
     });
   })
 }
+
+exports.acceptRequest = function(user, guide){
+  return new Promise((resolve, reject) => {
+    let query = 'UPDATE myTrips SET status = "accepted" WHERE user = ? and guide = ?';
+    db.run(query, [user, guide], function(err, res) {
+            if(err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+    });
+  })
+}

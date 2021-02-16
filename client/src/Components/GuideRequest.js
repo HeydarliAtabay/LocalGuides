@@ -1,143 +1,61 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import GuideItem from './GuideItem'
 import "./CSS/GuideRequest.css"
-import { Button,FormCheck,Form } from 'react-bootstrap'
+import {Button, FormCheck, Form} from 'react-bootstrap'
 import Slider from '@material-ui/core/Slider';
-
+import photo from '../assets/profile.jpg';
 
 export default class GuideRequest extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+            guide: {
+                id: undefined,
+                photo: undefined,
+                rating: 0,
+                name: undefined,
+                surname: undefined,
+                language: undefined,
+            }
+        }
+}
 
-    render() {
-        const pricemarks = [
-            {
-              value: 0,
-              label: '0€',
-            },
-            {
-              value: 15,
-              label: '15€',
-            },
-            {
-              value: 25,
-              label: '25€',
-            },
-            {
-                value: 35,
-                label: '35€',
-              },
-            {
-              value: 50,
-              label: '50€',
-            },
-          ];
-          const ratingmarks = [
-            {
-              value: 0,
-              label: '0',
-            },
-            {
-              value: 1,
-              label: '1',
-            },
-            {
-              value: 2,
-              label: '2',
-            },
-            {
-              value: 3,
-              label: '3',
-            },
-            {
-                value: 4,
-                label: '4',
-              },
-              {
-                value: 5,
-                label: '5',
-              },
-          ];
-        return (
-            <div className="guidelist">
-            <h3 className="title">You have a new request!</h3>
-            <div className="pricecont">
+  render() {
+    const pricemarks = [];
+    const ratingmarks = [];
+    return (
+      <div className="guidelist">
+        <h3 className="title">You have a new request!</h3>
+        <div className="pricecont">
 
-            <h3 style={{marginLeft:20}}>Price range</h3>
- <div className="slider">
- <Slider 
-  defaultValue={[15,25]}
-  aria-labelledby="discrete-slider-custom"
-  step={1}
-  max={50}
-  valueLabelDisplay="auto"
-  marks={pricemarks}
-/> 
-     </div>       
-
-            </div>
-            <div className="ratingcont">
-            <h3 style={{marginLeft:20}}>Rating</h3>  
-            <div className="slider">
-            <Slider 
-  defaultValue={[4]}
-  aria-labelledby="discrete-slider-custom"
-  step={1}
-  max={5}
-  valueLabelDisplay="auto"
-  marks={ratingmarks}
-/>
-            </div>
-            
-            </div>
-            <div className="languagecont">
-            <h3 style={{marginLeft:20}}>Languages</h3>
-            <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Italian"  type='checkbox'/>
-            <Form.Check inline label="English" type='checkbox'/>
-             <Form.Check inline label="Russian" type='checkbox'/>
-            <Form.Check inline label="Azerbaijani" type='checkbox'/>
-            <Form.Check inline label="Turkish" type='checkbox'/>
-             <Form.Check inline label="Polish" type='checkbox'/>
-      </Form>
-      </div>
-
-            </div>
-            
-            <div className="gendercont">
-            <h3 style={{marginLeft:20}}>Gender</h3>
-            <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Male"  type='radio' name="gender"/>
-            <Form.Check inline label="Female" type='radio' name="gender"/>
-             <Form.Check inline label="All" type='radio' name="gender"/>
-      </Form>
-      </div>
-            </div>
-
-            <div className="interestcont">
-            <h3 style={{marginLeft:20}}>Interests</h3>
-            <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Sport"  type='checkbox'/>
-            <Form.Check inline label="Art" type='checkbox'/>
-             <Form.Check inline label="Night life" type='checkbox'/>
-            <Form.Check inline label="Museums" type='checkbox'/>
-      </Form>
-      </div>
-            </div>
-
-            <div className="buttonapp">
-                <Button variant="success" size="lg"> Apply</Button>
-            </div>
-               
-               
-           
-            
+          <div className="slider"></div>
+          <div className="profile-photo">
+          <img alt="Profile" 
+                        src={this.state.guide.photo || photo} />
+                       
+          <h4>Samira Mammadova</h4>
+          <h5>Age: 24</h5>
+          <h5>Country: Azerbaijan</h5>
+          </div>
+          <div className="priceconts">
+            <h4 >Trip information</h4>
+         
+          <div className="priceconts">
+            <h5 >Date</h5>
+            <p>From: 08/02/2021</p>
+            <p>To: 10/02/2021</p>
+          </div>
+          <div className="priceconts">
+            <h5 >Preferences</h5>
+            <p>Languages: English</p>
+            <p>Activities: Museum, Night life</p>
+          </div>
+          <h6>Number of Tourists: 3</h6>
+          </div>
+          <Button size='lg' variant="success">Confirm</Button>
         </div>
-        )
-    }
+      </div>
+    )
+  }
 }
