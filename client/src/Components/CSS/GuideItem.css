@@ -20,12 +20,13 @@
   margin-right: 10px;
 }
 
-.itemheader {
+/* .itemheader {
   display: flex;
-  float: left;
-}
+  
+} */
 
-.itemheader img {
+.itemheader {
+  float: left;
   padding: 0.2rem;
   height: 8rem;
   width: 8rem;
@@ -53,28 +54,25 @@
   margin-bottom: auto;
 }
 
-.languages img {
+.languages{
   padding: 0.2rem;
   height: 3rem;
   width: 3rem;
 }
 
-.languages label {
-  font-size: 22px;
+.languages-label {
+  font-size: 1.3rem;
 }
 
 #price {
   text-align: right;
-
   font-size: 25px;
   font-weight: 700;
 }
 
 .username {
   float: inline-end;
-}
-.username h3 {
-  font-size: 2rem;
+  font-size: 2.3rem;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -92,4 +90,53 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+}
+
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+  /* Mobile view horizontal*/
+  .guideitem {
+    padding: 0.3rem;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .itemheader {
+    display: block;
+    float: left;
+  }
+
+  .itemheader {
+    padding: 0.2rem;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .username {
+    font-size: 1.5rem;
+  }
+
+  .languages {
+    padding: 0.2rem;
+    height: 2rem;
+    width: 2rem;
+  }
+  
+  .languages-label {
+    font-size: 1rem;
+  }
+
+  #price {
+    float: right;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .Rating {
+    left: -5%;
+  }
+  
 }

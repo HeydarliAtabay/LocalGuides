@@ -1,6 +1,6 @@
 /* Place the navbar at the bottom of the page, and make it stick */
 .navbar {
-    background-color: rgba(51, 51, 51, 0.575);
+    background-color: rgb(185, 185, 185);
     overflow: hidden;
     position: fixed;
     bottom: 0;
@@ -8,6 +8,7 @@
     margin: 1px;
     padding: 3px;
     justify-content: space-between;
+    z-index: 997;
   }
   
   /* Style the links inside the navigation bar */
@@ -17,6 +18,7 @@
     color: #f2f2f2;
     text-align: center;
     text-decoration: none;
+    z-index: 998;
   }
   
   /* Change the color of links on hover */
@@ -31,11 +33,13 @@
     color: white;
   }
 
-  .ml-20 {
-    margin-left: 20px;
+  .ml-10 {
+    margin-left: 10px;
+    padding: 2px;
   }
 
   .button img {
     height: 2rem;
     float: left;
+    z-index: 999;
   }

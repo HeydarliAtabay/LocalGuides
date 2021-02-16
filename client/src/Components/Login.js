@@ -53,15 +53,16 @@ class Login extends React.Component {
       <div id="loginform">
         <h2 id="headerTitle">Login</h2>
 
-        <div>
+        {/* <div> */}
           <div class="row">
-            <label>Username</label>
-            <input description="Username" value={this.state.username}
-             onChange={(ev) => this.onChangeUsername(ev)}
-        type="text" placeholder="Enter your username"
-          />
-          </div>
-        </div>
+            {/* <label>Email</label> */}
+            <input description="Email" 
+                    value={this.state.username}
+                    onChange={(ev) => this.onChangeUsername(ev)}
+                    type="text" 
+                    placeholder="Enter your email"/>
+          {/* </div> */}
+        {/* </div> */}
 
         {/* <Link
           style={{
@@ -70,7 +71,7 @@ class Login extends React.Component {
         }}
           className="Nav__link"
           > */}
-          <div id="buttonLogin" class="row">
+          {/* <div id="buttonLogin" class="row"> */}
             <button onClick={()=>{this.login(this.state.username)}} >Log in</button>
           </div>
         {/* </Link> */}

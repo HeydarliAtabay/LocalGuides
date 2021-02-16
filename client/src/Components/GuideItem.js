@@ -16,24 +16,24 @@ export default function   GuideItem(props) {
   const less=5-rating
     return (
         <div className="guideitem">
-           <div className="itemheader"> 
-           <img alt="Profile" src={props.photo ? props.photo : photo} />
-         </div>
-        <div className="username"> <h3 >{props.username}</h3> </div>
-         <div className="languages">
-             <label>Languages : </label>
-             <img  src={props.flag1} />
-             <img  src={props.flag2} />
-             <img  src={props.flag3} />
-           </div>
+           {/* <div >  */}
+              <img className="itemheader" alt="Profile" src={props.photo ? props.photo : photo} />
+            {/* </div> */}
+          <h3 className="username">{props.username}</h3>
+          {/* <span className="languages"> */}
+              <label className="languages-label">Languages : </label>
+              <img className="languages" src={props.flag1} />
+              <img className="languages" src={props.flag2} />
+              <img className="languages" src={props.flag3} />
+            {/* </span> */}
           <div className="Rating">
             {[...Array(rating)].map(star =>{
-              return  <FaStar size={30} color="#ffc107"/>
+              return  <FaStar size={20} color="#ffc107"/>
             })
             
             }
             {[...Array(less)].map(star =>{
-              return  <FaStar size ={30} color="#808080"/>
+              return  <FaStar size ={20} color="#808080"/>
             })
             }
 

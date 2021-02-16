@@ -13,11 +13,11 @@ html{
 }
 
 #loginform{
+  width: 30%;
+  height: 20rem;
   max-width: 500px;
   min-width: 300px;
   max-height: 700px;
-  width: 30%;
-  height: 60%;
   margin: 100px auto;
   background-color: #FFFFFF;
   border-radius: 25px;
@@ -37,7 +37,7 @@ html{
   align-items: center;
   padding-top: 2rem;
   max-width: 100%;
-  
+
 }
 
 .row input{
@@ -74,6 +74,7 @@ html{
 }
 
 .row button{
+  margin-top: 3rem;
   border-radius: 25px;
   width: 80%;
   height: 40px;
@@ -91,7 +92,7 @@ html{
   opacity: 0.8;
 }
 
-#buttonLogin{
+#button{
   padding-bottom: 1.5rem;
 }
 
@@ -130,4 +131,40 @@ html{
    text-align: center;
    padding-top: 2rem;
    margin-top: 1.5rem;
+}
+
+
+
+@media only screen and (max-width: 700px){
+  #loginform{
+    width: calc(100% - 2rem);
+    height: 17rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 5rem;
+  }
+
+  .row{
+    display: block;
+    text-align: center;
+    padding-top: 1rem;
+    width: 100%;
+    padding-left: 2rem;
+  }
+
+  .row input{
+    width: 90%;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: inset 0px -3px 0px 0px rgba(187,187,187,0.2);
+    transition: box-shadow 0.2s ease-in;
+  }
+  
+  .row button{
+    width: 90%;
+    margin: 1rem;
+  }
 }

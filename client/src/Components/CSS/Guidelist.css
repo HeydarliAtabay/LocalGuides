@@ -2,6 +2,7 @@
   padding: 40px;
   width: 100%;
   align-items: center;
+  text-align: center;
 }
 .title {
   margin-top: 20px;
@@ -10,8 +11,17 @@
   font-weight: 600;
 }
 .filtertxt {
+  width: 15rem;
+  padding: 0.3rem;
   font-size: 22px;
   text-align: center;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 15px;
+}
+
+.filtertxt a {
+  text-decoration: none;
 }
 
 .guideitemcont {
@@ -22,4 +32,32 @@
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 25px;
   border: 1px solid;
+}
+
+.guideitemcont a, a:hover, a:focus, a:active {
+  text-decoration: none;
+}
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+  /* Mobile view horizontal*/
+  .guidelist {
+    padding: 0.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .filtertxt {
+    width: 15rem;
+    padding-bottom: 0.1rem;
+    font-size: 1.3rem;
+    margin-left: calc(100% - 18rem);
+  }
+
+  .guideitemcont a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    width: 100%;
+    padding: 0;
+  }
+
 }

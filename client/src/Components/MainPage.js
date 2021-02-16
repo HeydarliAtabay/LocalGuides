@@ -111,20 +111,22 @@ handlePlaceSelect = () => {
     return (
       <div id="main">
         <Script url="https://maps.googleapis.com/maps/api/js?                               key=your_api_key&libraries=places"          
-      onLoad={this.handleScriptLoad}        />
+                onLoad={this.handleScriptLoad}        />
          
         <h3 id="mainText">Choose Your Next Destination</h3>
-        <div id='card'>
-      <div class="input-group">
-          <Search handlePlaceSelect={this.handlePlaceSelect} handleScriptLoad={this.handleScriptLoad} handleChangeSearch={this.handleChangeSearch} location={this.state.location}/>
-          
-          <Link to="/guides" >
-              <Button onClick={this.searchLoc}>Search</Button>
-          </Link>
-          
+        <div id='crd'>
+          <div class="input-group">
+              <Search handlePlaceSelect={this.handlePlaceSelect} 
+                      handleScriptLoad={this.handleScriptLoad} 
+                      handleChangeSearch={this.handleChangeSearch} 
+                      location={this.state.location}/>
+              
+              <Link to="/guides" >
+                  <Button id={'search'} onClick={this.searchLoc}>Search</Button>
+              </Link>
+              
           </div>
-          <br></br>
-          <Button onClick={()=>this.callLoc()} block>Near by Guides</Button>
+            <Button id={'nearby'} onClick={()=>this.callLoc()} block>Near by Guides</Button>
         </div>
 
       </div>

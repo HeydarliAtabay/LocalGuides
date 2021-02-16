@@ -115,7 +115,8 @@
     
     /* ------------------------------------ Chat box ----------------------------------------- */
     .chat-box {
-        height: calc(100vh - 5.5rem);
+        height: calc(100vh - 9.8rem);
+        padding-top: 0.7rem;
     }
     
     .chat-box span {
@@ -149,11 +150,13 @@
     /* --------------------------------------- type message --------------------------------------------------------- */
     
     .chat-page .type-message {
-        bottom: -0.2rem;
+        bottom: 4rem;
+        width: 103.6%;
+        left: -1.9%;
     }
     
     .chat-page .type-message input {
-        width: calc(100% - 0.6rem);
+        width: 100%;
         font-size: 1.3rem;
     }    
 }

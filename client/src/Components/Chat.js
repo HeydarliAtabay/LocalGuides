@@ -83,24 +83,7 @@ class Chat extends React.Component {
                     }
 
                     <ChatMessageBox user={this.state.user} />
-                    {/* <span className="right-message">
-                        <label>
-                            Hello...
-                        </label>
-                        <img alt="Profile" src={photo} />
-                    </span>
-                    <span className="left-message">
-                        <img alt="Profile" src={photo} />
-                        <label>
-                            Hii 
-                        </label>
-                    </span> */}
                 </div>
-               
-                {/* <span className="type-message">
-                    <input type="text" placeholder="type message" />
-                    <label>{send}</label>
-                </span> */}
             </div>
         );
     }

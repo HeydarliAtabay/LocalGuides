@@ -54,9 +54,16 @@ class App extends Component {
           this.state.user && <Redirect to='/main'/>
         }
         {
-          // this.state.user && 
-          <Sidebar setUser={this.setUser} user={this.state.user}/>
+          this.state.user && 
+          <>
+            <Sidebar setUser={this.setUser} user={this.state.user}/>
+            <div id="bottom-navbar">
+              <Bottombar/>
+            </div>
+          </>
+          
         }
+        
           <Switch>
             <Route  exact path="/">
               <Login setUser={this.setUser}/>
@@ -113,16 +120,7 @@ class App extends Component {
             <Route path="/main">
             
                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <MainPage user={this.state.user} setCity={this.setCity}/>
-          
-                {
-                  // this.state.user && 
-                  <div id="bottom-navbar">
-                    <Bottombar/>
-                  </div>
-                  
-                }
-              
+                <MainPage user={this.state.user} setCity={this.setCity}/>             
 
             </Route>
           </Switch>

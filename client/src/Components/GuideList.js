@@ -48,56 +48,55 @@ export default class GuideList extends Component {
     render() {
         return (
             <div className="guidelist">
-            <h3 className="title">Guides in {city}</h3>
-            <h2 className="filtertxt">
-                <Link to="/filter" >
-                    <label>{filter} search by filter</label>
-                </Link>
-                
-            </h2>
+                <h3 className="title">Guides in {city}</h3>
+                <h2 className="filtertxt">
+                    <Link to="/filter" >
+                        <label>{filter} search by filter</label>
+                    </Link>
+                    
+                </h2>
            
-            <div className="guideitemcont">
-                {
-                    this.state.guidelist.map(guide => {
-                        return (
-                            <Link to={'/guide'} onClick={() =>this.props.setGuide(guide.id)}>
-                                <GuideItem
-                                username={guide.name + ' ' + guide.surname} 
-                                photo={guide.photo} 
-                                flag1={Azerbaijan} 
-                                flag2={Italia}
-                                flag3={Usa}
-                                rating={guide.rating}
-                                price={guide.price}
-                                />
-                            </Link>
-                            
-                        )
-                    })
-                }
-            
-            {/* <GuideItem
-             username="Vasif Ağalarov" 
-             photo={profile}
-             flag1={Russia} 
-             flag2={Italia}
-             flag3={Azerbaijan}
-             rating={5}
-             price={12}
-             
-             />
-            <GuideItem 
-            username="Bayram Nurlu" 
-            photo={bayram}
-            flag1={Usa} 
-             flag2={Italia}
-             flag3={Russia}
-             rating={1}
-             price={75}
-            /> */}
+                <div className="guideitemcont">
+                    {
+                        this.state.guidelist.map(guide => {
+                            return (
+                                <Link to={'/guide'} onClick={() =>this.props.setGuide(guide.id)}>
+                                    <GuideItem
+                                    username={guide.name + ' ' + guide.surname} 
+                                    photo={guide.photo} 
+                                    flag1={Azerbaijan} 
+                                    flag2={Italia}
+                                    flag3={Usa}
+                                    rating={guide.rating}
+                                    price={guide.price}
+                                    />
+                                </Link>
+                                
+                            )
+                        })
+                    }
+                
+                {/* <GuideItem
+                username="Vasif Ağalarov" 
+                photo={profile}
+                flag1={Russia} 
+                flag2={Italia}
+                flag3={Azerbaijan}
+                rating={5}
+                price={12}
+                
+                />
+                <GuideItem 
+                username="Bayram Nurlu" 
+                photo={bayram}
+                flag1={Usa} 
+                flag2={Italia}
+                flag3={Russia}
+                rating={1}
+                price={75}
+                /> */}
+                </div>
             </div>
-            
-        </div>
         )
     }
 }

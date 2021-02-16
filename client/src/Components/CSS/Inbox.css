@@ -80,25 +80,59 @@
     .inbox {
         padding: 0.7rem;
         margin: 0.5rem;
+        height: 26rem;
     }
     
+    .inbox .header {
+        font-size: 2rem;
+    }
+
     .inbox-item {
+        display: inline-block;
         padding: 0.7rem;
         margin-top: 1rem;
     }
     
     .inbox-item img {
-        height: 5rem;
-        width: 5rem;
+        height: 4rem;
+        width: 4rem;
+        float: left;
+        margin-top: 0.5rem;
     }
     
     .inbox-item span {
         margin-left: 0.5rem;
-        width: calc(100% - 7rem);
+        width: calc(100% - 5rem);
         line-height: 1.2rem;
+        display: inline;
+        float: left;
     }
     
     .inbox-item .sender-name {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
+
+    /*     
+    .inbox-item img {
+        padding: 0.2rem;
+        height: 6rem;
+        width: 6rem;
+        border: 1px solid;
+        border-radius: 50% 50% 50% 50%;
+    }
+    
+    .inbox-item span {
+        display: inline-block;
+        margin-left: 1rem;
+        cursor: pointer;
+        width: calc(100% - 9rem);
+        text-align: left;
+        line-height: 1.5rem;
+    }
+    
+    .inbox-item .message {
+        width: 100%;
+        height: 3rem;
+        font-size: 1.1rem;
+    } */
 }

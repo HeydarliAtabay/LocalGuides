@@ -89,7 +89,8 @@
 #interest {
     position: relative;
     margin-left: -2.5rem;
-    bottom: 3rem
+    bottom: 3rem;
+    z-index: 1000;
 }
 
 .rating {
@@ -122,14 +123,19 @@
 @media only screen and (max-width: 700px){
     /* Mobile view horizontal*/
 
+    .profile{
+        margin-bottom: 4.5rem;
+    }
+
     .profile-photo {
         padding: 0.5rem;
+        padding-bottom: 0;
     }
     
     .profile-photo img {
         margin-left: 2rem;
-        height: 10rem;
-        width: 10rem;
+        height: 9rem;
+        width: 9rem;
     }
     
     .profile-photo p {

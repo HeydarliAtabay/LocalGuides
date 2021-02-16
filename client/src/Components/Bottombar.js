@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 function Bottombar(props) {
   return ( <> <div class="navbar">
 
-    <div className="button ml-20">
+    <div className="button ml-10">
     <Link className="Nav__link" to="/main">
       <Button id="btn" variant="outline-dark" block>
         <img src={Jumbotron} alt="my image" />
