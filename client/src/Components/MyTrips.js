@@ -1,7 +1,7 @@
 import React from 'react';
 import API from '../API/APIuser.js';
 import { Link } from 'react-router-dom';
-import './CSS/Inbox.css';
+import './CSS/MyTrips.css';
 import photo from '../assets/profile.jpg';
 
 
@@ -14,7 +14,6 @@ class MyTrips extends React.Component {
     }
 
     componentDidMount(){
-
         API.getMyTrips(this.props.user.id)
             .then((myTrips) => {
                 this.setState({trips: myTrips});
@@ -25,31 +24,35 @@ class MyTrips extends React.Component {
  
     render() {
         return (
-            <div className="inbox">
+            <div className="trips">
 
                 <label className="header">My Trips</label>
 
                 {
                     this.state.trips.map( trip => {
                         return (
-                            <Link to={'/chat'} >
-                                <div className="inbox-item" key={trip.id}>
+                            <Link >
+                                <div className="trips-item" key={trip.id}>
                                     <span>
-                                        Date: {trip.StartDate} - {trip.EndDate}
-                                        <br></br>
-                                        City: {trip.City} 
-                                        <br></br>
-                                        Guide: {trip.name} {trip.surname}
-                                        <br></br>
-                                        Status: {trip.Status}
-                                        <br></br>
-                                        Contact with Guide: {}
-                                        {/* <br></br>
-                                        Number of Tourist: {trip.TouristCount} */}
+                                    <br></br>
+                                        <div className="itemHead">City: </div> 
+                                        <div className="itemDet">{trip.City}</div>
+                                        {/* <br></br> */}
+                                        <div className="itemHead">Start Date:</div>
+                                         <div className="itemDet">{trip.StartDate}</div>  
+                                        {/* <br></br> */}
+                                        <div className="itemHead">End Date:</div>
+                                         <div className="itemDet">{trip.EndDate}</div> 
+                                        {/* <br></br> */}
+                                        <div className="itemHead">Guide:</div>
+                                         <div className="itemDet">{trip.name} {trip.surname}</div>
+                                        {/* <br></br> */}
+                                        <div className="itemHead">Status:</div>
+                                         <div className="itemDet">{trip.Status}</div> 
+
                                     </span>
                                 </div>
                             </Link>
-                            
                         )
                     })
                 }                

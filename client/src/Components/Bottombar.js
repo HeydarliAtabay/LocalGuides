@@ -37,7 +37,7 @@ function Bottombar(props) {
     </div>
 
     <div className="button">
-    <Link className="Nav__link" to="/main">
+    <Link className="Nav__link" to="/trips">
       <Button id="btn" variant="outline-dark" block>
         <img src={Jumbotron3} alt="my image" />
       </Button>

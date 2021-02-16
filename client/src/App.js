@@ -119,7 +119,7 @@ class App extends Component {
                 {
                   // this.state.user && 
                   <div id="bottom-navbar">
-                    <Bottombar/>
+                    <Bottombar setUser={this.setUser} user={this.state.user}/>
                   </div>
                   
                 }
@@ -133,7 +133,7 @@ class App extends Component {
                 {
                   // this.state.user && 
                   <div id="bottom-navbar">
-                    <Bottombar/>
+                    <Bottombar setUser={this.setUser} user={this.state.user}/>
                   </div>
                   
                 }
