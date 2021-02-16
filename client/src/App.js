@@ -93,7 +93,7 @@ class App extends Component {
             <Route path="/create">
               
                 {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <CreateTrip/>
+                <CreateTrip user={this.state.user} guide={this.state.guide}/>
             
 
             </Route>

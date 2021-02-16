@@ -200,3 +200,17 @@ exports.getMyList = function(id){
     });
   })
 }
+
+exports.sendTripRequest = function(StartDate, EndDate,Guide,City,TouristCount,Status,user){
+  return new Promise((resolve, reject) => {
+    const query = 'INSERT INTO myTrips (StartDate, EndDate, Guide, City, TouristCount, Status, user) VALUES(?,?,?,?,?,?,?)';
+    db.run(query, [StartDate, EndDate,Guide,City,TouristCount,Status,user], function(err, row) {
+            if(err) {
+              reject(err);
+            }
+            else {
+              resolve(null);
+            }
+    });
+  })
+}

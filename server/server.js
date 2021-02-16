@@ -180,6 +180,24 @@ app.get('/api/get-my-trips/:id', (req,res) => {
         })
 })
 
+///
+app.post('/api/sendTripRequest/', (req, res) => {
+    const StartDate=req.body.StartDate
+    const EndDate = req.body.EndDate;
+    const Guide=req.body.Guide
+    const City = req.body.City;
+    const TouristCount=req.body.TouristCount
+    const Status = req.body.Status;
+    const user = req.body.user;
+
+    dao.sendTripRequest(StartDate, EndDate,Guide,City,TouristCount,Status,user).then( (ok) => {
+      res.status(200).end();
+    }).catch( error => {
+      res.status(502).json(error);
+    });
+  });
+
+
 
 /// socket///
 
@@ -219,8 +237,8 @@ io.on("connection", (socket) => {
 //****************************************************** */ */
 //// In case of error during run server 
 //// comment below line (http.listen...)
- http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
+//  http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
 //// then decommment below line (http.listen...)
-//http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
+http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
 /// and chnage proxy to 'http://localhost:3001' in package.json and useChat.js of client side
 //************************************************************************************ */

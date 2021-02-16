@@ -104,7 +104,6 @@ async function getGuideList (city){
 async function getMyTrips (userId){
     let response = await fetch('/api/get-my-trips/' + userId);
     let result = await response.json();
-
     if(response.ok){
         return result;
     } else{
@@ -112,6 +111,27 @@ async function getMyTrips (userId){
     }
 }
 
-const userMethods = {userLogin, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
+async function sendTripRequest(StartDate, EndDate,Guide,City,TouristCount,Status,user) {
+    return new Promise((resolve, reject) => {
+        fetch('/api/sendTripRequest/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({StartDate: StartDate, EndDate: EndDate,Guide: Guide, City: City,TouristCount: TouristCount, Status: Status, user: user})
+        }).then((response) => {
+            if (response.ok) {
+                resolve(response.json());
+            } else {
+                // analyze the cause of error
+                response.json()
+                    .then((obj) => {  reject(obj); }) // error msg in the response body
+                    .catch((err) => { reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+                }
+        }).catch((err) => { reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+    });
+    }
+
+const userMethods = {userLogin, sendTripRequest, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
 
 export default userMethods;

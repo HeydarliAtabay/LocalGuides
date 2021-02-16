@@ -5,11 +5,31 @@ import "./CSS/CreateTrip.css"
 import { Button,FormCheck,Form } from 'react-bootstrap'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import API from '../API/APIuser.js';
+import { Link } from "react-router-dom";
 
 
-function CreateTrip() {
+
+function CreateTrip(props) {
     const [startDate, setStartDate] = useState(new Date());
-    const [startNum, setStartNum]=useState(new Number())
+    const [endDate, setEndDate] = useState(new Date());
+    const [startNum, setStartNum]=React.useState("");
+
+
+    const onChangeHandler = event => {
+        setStartNum(event.target.value);
+      };
+      
+    const sendTripRequest = () => {
+    API.sendTripRequest(startDate, endDate, props.guide, "Turin", startNum, "waiting", props.user.id)
+        .then((res) => {   
+            alert(startDate, endDate, props.guide, "Turin", startNum, "waiting", props.user.id);
+
+        }).catch((error) => {
+            console.error(error);
+        })
+    
+      };
 
         return (
             <div className="trip">
@@ -19,7 +39,7 @@ function CreateTrip() {
                 <h4>From</h4>
                 <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
                 <h4>To</h4>
-                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
                 </div>
                 <div className="datecont">
                 <h4>Languages</h4>
@@ -44,12 +64,12 @@ function CreateTrip() {
                 </div>
                 <div className="datecont">
                 <h5>Number of tourists</h5>
-                
+                <input value={startNum} onChange={onChangeHandler} type="number" id="tentacles" name="tentacles" min="1" max="10"></input>
                 </div>
-                <div><Button variant="success" size="lg"> Send the request</Button> </div>
-            
-      
-
+                <div>
+                    <Link to='/trips'>
+                    <Button onClick={()=>sendTripRequest()} variant="success" size="lg"> Send the request</Button>
+                    </Link> </div>
             </div>
            
                
