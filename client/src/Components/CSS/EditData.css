@@ -77,4 +77,9 @@
         margin-left: 0.3rem;
         margin-right: 0.7rem;
     }
+
+    /* .edit-item input{
+        position: relative;
+        z-index: 0;
+    } */
 }

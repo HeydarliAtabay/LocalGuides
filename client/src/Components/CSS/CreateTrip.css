@@ -7,8 +7,64 @@
 }
 .datecont {
   padding: 1rem;
+  margin-top: 1rem;
   margin-bottom: 15px;
   border: 1px solid;
   border-radius: 10px 10px 10px 10px;
   background: rgba(252, 252, 252, 0.336);
+}
+
+.dt input{
+  /* margin-right: 5px; */
+  max-width: calc(100% - 0.5rem);
+}
+
+.num input{ 
+  margin-left: 1rem;
+}
+
+.send-trip{
+  width: 100%;
+}
+
+/* .trip input, label{
+  position: relative;
+  z-index: -1;
+} */
+
+/* --------------------------------------- Mobile view ------------------------------------------------- */
+
+@media only screen and (max-width: 700px){
+  /* Mobile view horizontal*/
+
+  .trip{
+    margin: 0.3rem;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+  }
+
+  .title{
+    margin-bottom: 1.3rem;
+  }
+
+  .send-trip a{
+    width: 100%;
+  }
+
+  .send-trip a button{
+    width: 100%;
+  }
+
+  .requestcont .ttl{ 
+    font-size: 1.8rem;
+    text-align: center;
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  .btn-x{
+    position: fixed;
+    right: 0.5rem;
+    top: 1.2rem;
+  }
 }

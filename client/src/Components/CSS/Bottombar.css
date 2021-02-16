@@ -8,7 +8,7 @@
     margin: 1px;
     padding: 3px;
     justify-content: space-between;
-    z-index: 997;
+    z-index: 1;
   }
   
   /* Style the links inside the navigation bar */
@@ -18,7 +18,8 @@
     color: #f2f2f2;
     text-align: center;
     text-decoration: none;
-    z-index: 998;
+    position: relative;
+    z-index: 1;
   }
   
   /* Change the color of links on hover */
@@ -41,5 +42,6 @@
   .button img {
     height: 2rem;
     float: left;
-    z-index: 999;
+    position: relative;
+    z-index: 1;
   }

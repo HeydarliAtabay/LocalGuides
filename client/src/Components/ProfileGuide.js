@@ -79,14 +79,14 @@ class ProfileGuide extends React.Component {
                             <span className="online">{'......'}</span>
                         </p>
 
-                        <p>
+                        <span>
                             <Link to="/chat" >
                                 <Button variant="light" className={"btn-guide"} onClick={() =>this.contact()}>{contact} Contact</Button>
                             </Link>
                             <Link to="/create">
                                 <Button variant="light" className={"btn-guide ml-20"}>{select} Request trip</Button>
                             </Link>
-                        </p>
+                        </span>
                     
                 </div>
                 <div className="profile-data">
