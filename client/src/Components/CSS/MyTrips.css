@@ -73,6 +73,12 @@
     background:rgba(252, 252, 252, 0.36)
 }
 
+.btn-guide {
+    width: 100%;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+
 
 /* --------------------------------------- Mobile view ------------------------------------------------- */
 
@@ -81,21 +87,25 @@
     .trips {
         padding: 0.7rem;
         margin: 0.5rem;
+        margin-bottom: 5rem;
+    }
+
+    .trips .header {
+        font-size: 2rem;
     }
     
     .trips-item {
         padding: 0.7rem;
         margin-top: 1rem;
     }
-    
-    .trips-item img {
-        height: 5rem;
-        width: 5rem;
+
+    .trips-item .itemHead{
+        margin-bottom: 0.3rem;
     }
     
     .trips-item span {
-        margin-left: 0.5rem;
-        width: calc(100% - 7rem);
+        margin-left: 2rem;
+        width: 100%;
         line-height: 1.2rem;
     }
     

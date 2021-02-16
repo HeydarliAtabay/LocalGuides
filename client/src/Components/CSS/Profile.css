@@ -166,4 +166,14 @@
         bottom: 5rem
     }
     
+
+    .btn-guide {
+        width: 9.5rem;
+        height: 3rem;
+    
+    }
+    
+    .online {
+        font-size: 0.7rem;
+    }
 }

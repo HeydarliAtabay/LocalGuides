@@ -135,7 +135,7 @@ class App extends Component {
             <Route path="/trips">
             
                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <MyTrips user={this.state.user} setCity={this.setCity}/>
+                <MyTrips user={this.state.user} setCity={this.setCity} guide={this.state.guide} setChat={this.setChat}/>
           
                 {/* {
                   // this.state.user && 

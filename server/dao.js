@@ -188,7 +188,7 @@ exports.getGuideList = function(city){
 exports.getMyList = function(id){
 
   return new Promise((resolve, reject) => {
-    const query = 'SELECT * from myTrips LEFT JOIN users on myTrips.Guide=users.id where myTrips.user=?';
+    const query = 'SELECT * from myTrips LEFT JOIN users on myTrips.Guide=users.id where myTrips.user=? ORDER By id DESC';
     db.all(query, [id], function(err, rows) {
             if(err) {
               reject(err);
