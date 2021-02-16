@@ -19,6 +19,7 @@ import {withRouter} from 'react-router-dom';
 import MainPage from './Components/MainPage';
 import MyTrips from './Components/MyTrips';
 import Bottombar from './Components/Bottombar';
+import API from './API/APIuser'
 
 class App extends Component {
     constructor(props) {
@@ -28,8 +29,22 @@ class App extends Component {
         guide: undefined,
         chat: null,
         city: null,
-        name: ""
+        name: "",
+        filter: false,
+        guidelist: undefined
       }
+    }
+
+    setFilter=()=>{
+      API.filterRequest(35, 4)
+              .then((res) => {   
+                this.setState({guidelist: res, filter: !this.state.filter});
+              }).catch((error) => {
+                  console.error(error);
+              })
+
+          // this.setState({filter: !this.state.filter});
+            
     }
 
     setUser=(e)=>{
@@ -47,6 +62,7 @@ class App extends Component {
     setCity = (e) =>{
       this.setState({city: e})
     }
+
 
     render() {
     return (
@@ -66,6 +82,7 @@ class App extends Component {
           
         }
         
+        
           <Switch>
             <Route  exact path="/">
               <Login setUser={this.setUser}/>
@@ -77,17 +94,12 @@ class App extends Component {
              
             </Route>
             <Route path="/guides">
-              
-                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <GuideList city={this.state.city} setGuide={this.setGuide}/>
-
+                <GuideList guidelist={this.state.guidelist} city={this.state.city} setGuide={this.setGuide}/>
             </Route>
 
             <Route path="/filter">
-             
-                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <Filter/>
-
+              <Sidebar></Sidebar>
+                <Filter setFilter={this.setFilter} filter={this.state.filter}/>
             </Route>
 
             <Route path="/create">
@@ -124,12 +136,10 @@ class App extends Component {
             </Route>
             <Route path="/chat">
               
-                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <Chat user={this.state.user} chat={this.state.chat}/>
             </Route>
             <Route path="/main">
             
-               {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <MainPage user={this.state.user} setCity={this.setCity}/>             
               </Route>
             <Route path="/trips">

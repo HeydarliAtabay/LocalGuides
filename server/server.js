@@ -210,6 +210,17 @@ app.post('/api/sendTripRequest/', (req, res) => {
   });
 
 
+  app.post('/api/filterRequest/', (req, res) => {
+    const price = req.body.price;
+    const rating=req.body.rating;
+    dao.filterRequest(price, rating).then((ok) => {
+
+       res.status(200).json(ok);
+    }).catch( error => {
+      res.status(502).json(error);
+    });
+  });
+
 
 /// socket///
 

@@ -18,7 +18,7 @@ const filter = <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" vi
 
 
 
-const city = 'Torino'
+const city = 'Turin'
 
 export default class GuideList extends Component {
 
@@ -33,16 +33,22 @@ export default class GuideList extends Component {
         prop: PropTypes
     }
 
+
+
     componentDidMount(){
         // default city is Torino it will be changed after real implementation
-        
+        if(this.props.guidelist){
+            this.setState({guidelist: this.props.guidelist});
+         }
+         else{ 
         API.getGuideList(city)
         .then((guides) => {
             this.setState({guidelist: guides});
-            
+
         }).catch((error) => {
             console.error(error);
         })
+    }
     }
 
     render() {
