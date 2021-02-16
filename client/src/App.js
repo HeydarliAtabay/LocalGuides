@@ -60,7 +60,7 @@ class App extends Component {
           <>
             <Sidebar setUser={this.setUser} user={this.state.user}/>
             <div id="bottom-navbar">
-              <Bottombar/>
+              <Bottombar user={this.state.user} guide={this.state.guide} />
             </div>
           </>
           
@@ -101,7 +101,7 @@ class App extends Component {
             <Route path="/request">
               
               {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-              <GuideRequest/>
+              <GuideRequest user={this.state.user} guide={this.state.guide}/>
           
 
           </Route>

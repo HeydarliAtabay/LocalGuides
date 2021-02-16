@@ -60,6 +60,7 @@ function Sidebar(props) {
       </Link>
     </div>
 
+    {props.user && props.user.userType==="tourist" &&
     <div id="button">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/trips">
       <Button id="btn" variant="outline-dark" block>
@@ -74,6 +75,24 @@ function Sidebar(props) {
       </Button>
       </Link>
     </div>
+}
+
+{props.user && props.user.userType==="guide" &&
+    <div id="button">
+    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/request">
+      <Button id="btn" variant="outline-dark" block>
+        <img style={{
+          height: "2rem",
+          float: "left",
+          margin: "3px"
+        }} src={Jumbotron3} alt="my image" 
+        // onClick={this.routeAddCor }}
+      />
+        <h4 id="text">My Trips</h4>
+      </Button>
+      </Link>
+    </div>
+}
 
     <div id="buttonLogout">
     <Link style={{ color: 'inherit', textDecoration: 'inherit'}} className="Nav__link" to="/">

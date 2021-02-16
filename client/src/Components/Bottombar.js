@@ -36,6 +36,16 @@ function Bottombar(props) {
       </Link>
     </div>
 
+  {props.user && props.user.userType==="guide" &&
+    <div className="button">
+    <Link className="Nav__link" to="/request">
+      <Button id="btn" variant="outline-dark" block>
+        <img src={Jumbotron3} alt="my image" />
+      </Button>
+      </Link>
+    </div>
+    }
+      {props.user && props.user.userType==="tourist" &&
     <div className="button">
     <Link className="Nav__link" to="/trips">
       <Button id="btn" variant="outline-dark" block>
@@ -43,6 +53,7 @@ function Bottombar(props) {
       </Button>
       </Link>
     </div>
+    }
 
   </div> 
   </>

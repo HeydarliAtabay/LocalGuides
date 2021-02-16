@@ -29,7 +29,7 @@ const createUser = function (row) {
 
 exports.getTourist = function (email) {
     return new Promise((resolve, reject) => {
-      const sql = "SELECT * FROM users WHERE email = ?"
+      const sql = 'SELECT *, "user-type" as userType FROM users WHERE email = ?'
       db.all(sql, [email], (err, rows) => {
           console.log("asdfg");
         if (err) 

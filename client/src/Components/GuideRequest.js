@@ -5,6 +5,7 @@ import "./CSS/GuideRequest.css"
 import {Button, FormCheck, Form} from 'react-bootstrap'
 import Slider from '@material-ui/core/Slider';
 import photo from '../assets/profile.jpg';
+import API from '../API/APIuser.js';
 
 export default class GuideRequest extends Component {
   constructor(props) {
@@ -13,12 +14,21 @@ export default class GuideRequest extends Component {
             guide: {
                 id: undefined,
                 photo: undefined,
-                rating: 0,
                 name: undefined,
                 surname: undefined,
                 language: undefined,
             }
         }
+}
+
+ acceptTripRequest = () => {
+  API.acceptTripRequest(this.props.user.id, this.props.guide)
+      .then((myTrips) => {
+          // this.setState({trips: myTrips});
+
+      }).catch((err) => {
+          console.log(err);
+      })
 }
 
   render() {
@@ -34,9 +44,9 @@ export default class GuideRequest extends Component {
           <img alt="Profile" 
                         src={this.state.guide.photo || photo} />
                        
-          <h4>Samira Mammadova</h4>
+          <h4>Victoria Valentini</h4>
           <h5>Age: 24</h5>
-          <h5>Country: Azerbaijan</h5>
+          <h5>Country: Italy</h5>
           </div>
           <div className="priceconts">
             <h4 >Trip information</h4>
@@ -53,7 +63,7 @@ export default class GuideRequest extends Component {
           </div>
           <h6>Number of Tourists: 3</h6>
           </div>
-          <Button size='lg' variant="success">Confirm</Button>
+          <Button onClick={()=>this.acceptTripRequest()} size='lg' variant="success">Confirm</Button>
         </div>
       </div>
     )

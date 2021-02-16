@@ -132,6 +132,28 @@ async function sendTripRequest(StartDate, EndDate,Guide,City,TouristCount,Status
     });
     }
 
-const userMethods = {userLogin, sendTripRequest, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
+
+    async function acceptTripRequest(user, guide) {
+        return new Promise((resolve, reject) => {
+            fetch('/api/acceptRequest/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({user: user, guide: guide})
+            }).then((response) => {
+                if (response.ok) {
+                    resolve(response.json());
+                } else {
+                    // analyze the cause of error
+                    response.json()
+                        .then((obj) => {  reject(obj); }) // error msg in the response body
+                        .catch((err) => { reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+                    }
+            }).catch((err) => { reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+        });
+        }
+
+const userMethods = {userLogin, acceptTripRequest, sendTripRequest, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
 
 export default userMethods;
