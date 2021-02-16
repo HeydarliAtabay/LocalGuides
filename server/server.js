@@ -170,6 +170,16 @@ app.get('/api/get-guide-list/:city', (req,res) => {
         })
 })
 
+app.get('/api/get-my-trips/:id', (req,res) => {
+    const id = req.params.id;
+    dao.getMyList(id)
+        .then((myList) => {
+            res.status(200).json(myList)
+        }).catch(err => {
+            res.status(500).send({err: err});
+        })
+})
+
 
 /// socket///
 
@@ -209,9 +219,9 @@ io.on("connection", (socket) => {
 //****************************************************** */ */
 //// In case of error during run server 
 //// comment below line (http.listen...)
-http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
+// http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
 //// then decommment below line (http.listen...)
-// http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
+http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
 /// ******************************************************
 /// and chnage proxy to 'http://localhost:3001' in package.json and useChat.js of client side
 //************************************************************************************ */
