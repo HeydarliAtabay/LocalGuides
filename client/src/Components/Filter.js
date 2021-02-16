@@ -132,7 +132,7 @@ export default class Filter extends Component {
             </div>
 
             <div className="buttonapp">
-                <Button variant="outline-success" size="lg"> Apply</Button>
+                <Button variant="success" size="lg"> Apply</Button>
             </div>
                
                
