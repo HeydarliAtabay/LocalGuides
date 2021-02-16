@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import GuideItem from './GuideItem'
-import "./CSS/Filter.css"
+import "./CSS/GuideRequest.css"
 import { Button,FormCheck,Form } from 'react-bootstrap'
 import Slider from '@material-ui/core/Slider';
 
 
-export default class Filter extends Component {
+export default class GuideRequest extends Component {
     static propTypes = {
         prop: PropTypes
     }
@@ -62,8 +62,7 @@ export default class Filter extends Component {
           ];
         return (
             <div className="guidelist">
-            <h3 className="title">Filters</h3>
-            <h2 className="filtertxt">Clear selections</h2>
+            <h3 className="title">You have a new request!</h3>
             <div className="pricecont">
 
             <h3 style={{marginLeft:20}}>Price range</h3>

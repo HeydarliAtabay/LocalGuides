@@ -11,6 +11,7 @@ import Chat from './Components/Chat';
 import GuideList from './Components/GuideList'
 import Filter from './Components/Filter'
 import CreateTrip from './Components/CreateTrip'
+import GuideRequest from './Components/GuideRequest'
 
 import {Switch} from 'react-router';
 import {BrowserRouter, Redirect, Route} from 'react-router-dom'
@@ -96,6 +97,14 @@ class App extends Component {
             
 
             </Route>
+
+            <Route path="/request">
+              
+              {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
+              <GuideRequest/>
+          
+
+          </Route>
 
             <Route path="/guide">
             

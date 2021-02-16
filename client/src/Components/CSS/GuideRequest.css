@@ -1,0 +1,169 @@
+.guideitem {
+  padding: 20px;
+  width: 99%;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.pricecont {
+  /* background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    border: 1px solid; */
+  padding: 2rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
+.ratingcont {
+  /* background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    border: 1px solid; */
+  padding: 2rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
+.languagecont {
+  /* background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    border: 1px solid; */
+  padding: 2rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
+.gendercont {
+  /* background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    border: 1px solid; */
+  padding: 2rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
+.interestcont {
+  /* background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    border: 1px solid; */
+  padding: 2rem;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(252, 252, 252, 0.336);
+}
+.slider {
+  width: 80%;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.langcheck {
+  width: 80%;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.buttonapp {
+  margin-top: 20px;
+  margin-left: 150px;
+  width: 200px;
+}
+.gttitle {
+  font-size: 50px;
+  text-align: center;
+}
+.post__avatar {
+  margin-right: 10px;
+}
+
+.itemheader {
+  display: flex;
+  float: left;
+}
+
+.itemheader img {
+  padding: 0.2rem;
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid;
+  border-radius: 50% 50% 50% 50%;
+}
+.itemheader h3 {
+  font-size: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.languages {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.languages img {
+  padding: 0.2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.languages label {
+  font-size: 22px;
+}
+
+#price {
+  text-align: right;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.username {
+  float: inline-end;
+}
+.username h3 {
+  font-size: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+.Rating {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
