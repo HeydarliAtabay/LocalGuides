@@ -66,12 +66,18 @@ class App extends Component {
     setCity = (e) =>{
       this.setState({city: e})
     }
+    logOut = () =>{
+      this.setState({user: null})
+    }
 
 
     render() {
     return (
      
         <BrowserRouter>
+        <div className="testMobile"> 
+            This app designed for Mobile Device. Please run on the mobile device
+        </div>
         {
           this.state.user && <Redirect to='/main'/>
         }
@@ -94,7 +100,7 @@ class App extends Component {
             <Route path="/user">
               
                 {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <ProfileUser setUser={this.setUser} user={this.state.user}/>
+                <ProfileUser logOut={this.logOut} setUser={this.setUser} user={this.state.user}/>
              
             </Route>
             <Route path="/guides">
