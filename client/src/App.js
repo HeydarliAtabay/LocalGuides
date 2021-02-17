@@ -48,6 +48,9 @@ class App extends Component {
             
     }
 
+    clrfilter = () => {
+      this.setState({guidelist: []});
+    }
     setUser=(e)=>{
        this.setState({user: e})
     }
@@ -100,7 +103,7 @@ class App extends Component {
 
             <Route path="/filter">
               <Sidebar></Sidebar>
-                <Filter setFilter={this.setFilter} filter={this.state.filter}/>
+                <Filter setFilter={this.setFilter} filter={this.state.filter} clrfilter={this.clrfilter}/>
             </Route>
 
             <Route path="/create">

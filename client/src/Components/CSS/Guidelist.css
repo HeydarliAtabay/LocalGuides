@@ -54,6 +54,10 @@
     margin-left: calc(100% - 18rem);
   }
 
+  .guideitemcont {
+    margin-bottom: 5rem;
+  }
+
   .guideitemcont a, a:hover, a:focus, a:active {
     text-decoration: none;
     width: 100%;

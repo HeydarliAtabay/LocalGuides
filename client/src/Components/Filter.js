@@ -73,74 +73,74 @@ export default class Filter extends Component {
               },
           ];
         return (
-            <div className="guidelist">
-            <h3 className="title">Filters</h3>
-            <h2 className="filtertxt">Clear selections</h2>
+            <div className="flt">
+              <h3 className="title">Filters</h3>
+              <h2 className="filtertxt" onClick={this.props.clrfilter}>Clear selections</h2>
             <div className="pricecont">
 
-            <h3 style={{marginLeft:20}}>Price range</h3>
- <div className="slider">
- <Slider 
-  defaultValue={[15,35]}
-  aria-labelledby="discrete-slider-custom"
-  step={1}
-  max={50}
-  valueLabelDisplay="auto"
-  marks={pricemarks}
-/> 
-     </div>       
+              <h3 style={{marginLeft:20}}>Price range</h3>
+              <div className="slider">
+                <Slider 
+                  defaultValue={[15,35]}
+                  aria-labelledby="discrete-slider-custom"
+                  step={1}
+                  max={50}
+                  valueLabelDisplay="auto"
+                  marks={pricemarks}
+                /> 
+              </div>       
 
             </div>
             <div className="ratingcont">
-            <h3 style={{marginLeft:20}}>Rating</h3>  
-            <div className="slider">
-            <Slider 
-  defaultValue={[4]}
-  aria-labelledby="discrete-slider-custom"
-  step={1}
-  max={5}
-  valueLabelDisplay="auto"
-  marks={ratingmarks}
-/>
-            </div>
+              <h3 style={{marginLeft:20}}>Rating</h3>  
+              <div className="slider">
+                <Slider 
+                  defaultValue={[4]}
+                  aria-labelledby="discrete-slider-custom"
+                  step={1}
+                  max={5}
+                  valueLabelDisplay="auto"
+                  marks={ratingmarks}
+                />
+              </div>
             
             </div>
             <div className="languagecont">
-            <h3 style={{marginLeft:20}}>Languages</h3>
+              <h3 style={{marginLeft:20}}>Languages</h3>
             <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Italian"  type='checkbox'/>
-            <Form.Check inline label="English" type='checkbox'/>
-             <Form.Check inline label="Russian" type='checkbox'/>
-            <Form.Check inline label="Azerbaijani" type='checkbox'/>
-            <Form.Check inline label="Turkish" type='checkbox'/>
-             <Form.Check inline label="Polish" type='checkbox'/>
-      </Form>
-      </div>
+              <Form>
+                    <Form.Check inline label="Italian"  type='checkbox'/>
+                    <Form.Check inline label="English" type='checkbox'/>
+                    <Form.Check inline label="Russian" type='checkbox'/>
+                    <Form.Check inline label="Azerbaijani" type='checkbox'/>
+                    <Form.Check inline label="Turkish" type='checkbox'/>
+                    <Form.Check inline label="Polish" type='checkbox'/>
+              </Form>
+            </div>
 
             </div>
             
             <div className="gendercont">
-            <h3 style={{marginLeft:20}}>Gender</h3>
+              <h3 style={{marginLeft:20}}>Gender</h3>
             <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Male"  type='radio' name="gender"/>
-            <Form.Check inline label="Female" type='radio' name="gender"/>
-             <Form.Check inline label="All" type='radio' name="gender"/>
-      </Form>
-      </div>
+                  <Form>
+                        <Form.Check inline label="Male"  type='radio' name="gender"/>
+                        <Form.Check inline label="Female" type='radio' name="gender"/>
+                        <Form.Check inline label="All" type='radio' name="gender"/>
+                  </Form>
+            </div>
             </div>
 
             <div className="interestcont">
-            <h3 style={{marginLeft:20}}>Interests</h3>
+              <h3 style={{marginLeft:20}}>Interests</h3>
             <div className="langcheck">
-            <Form>
-            <Form.Check inline label="Sport"  type='checkbox'/>
-            <Form.Check inline label="Art" type='checkbox'/>
-             <Form.Check inline label="Night life" type='checkbox'/>
-            <Form.Check inline label="Museums" type='checkbox'/>
-      </Form>
-      </div>
+              <Form>
+                    <Form.Check inline label="Sport"  type='checkbox'/>
+                    <Form.Check inline label="Art" type='checkbox'/>
+                    <Form.Check inline label="Night life" type='checkbox'/>
+                    <Form.Check inline label="Museums" type='checkbox'/>
+              </Form>
+            </div>
             </div>
 
             <div className="buttonapp">
