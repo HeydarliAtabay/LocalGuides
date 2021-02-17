@@ -37,18 +37,18 @@ export default class GuideList extends Component {
 
     componentDidMount(){
         // default city is Torino it will be changed after real implementation
-        if(this.props.guidelist){
+        if(this.props.guidelist.length > 0){
             this.setState({guidelist: this.props.guidelist});
          }
          else{ 
-        API.getGuideList(city)
-        .then((guides) => {
-            this.setState({guidelist: guides});
+            API.getGuideList(city)
+            .then((guides) => {
+                this.setState({guidelist: guides});
 
-        }).catch((error) => {
-            console.error(error);
-        })
-    }
+            }).catch((error) => {
+                console.error(error);
+            })
+        }
     }
 
     render() {

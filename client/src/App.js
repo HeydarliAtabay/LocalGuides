@@ -31,13 +31,14 @@ class App extends Component {
         city: null,
         name: "",
         filter: false,
-        guidelist: undefined
+        guidelist: []
       }
     }
 
     setFilter=()=>{
       API.filterRequest(35, 4)
               .then((res) => {   
+                console.log('setfilter api res' + res)
                 this.setState({guidelist: res, filter: !this.state.filter});
               }).catch((error) => {
                   console.error(error);

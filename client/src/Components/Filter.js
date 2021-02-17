@@ -145,7 +145,7 @@ export default class Filter extends Component {
 
             <div className="buttonapp">
               <Link to='/guides'>
-                <Button onClick={this.props.setFilter()} variant="success" size="lg"> Apply</Button>
+                <Button onClick={()=>this.props.setFilter()} variant="success" size="lg"> Apply</Button>
               </Link>
             </div>
                
