@@ -4,6 +4,12 @@
     margin-top: 3rem;
 }
 
+.profile-photoM img {
+  padding: 0.2rem;
+  height: 10rem;
+  width: 20rem;
+  margin-bottom: 5rem;
+}
 #crd{
   display: block;
   padding: 1rem;

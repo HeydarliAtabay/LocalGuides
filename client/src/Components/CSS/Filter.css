@@ -1,3 +1,8 @@
+.flt{
+  padding: 0.3rem;
+  padding-bottom: 6rem;
+}
+
 .guideitem {
   padding: 20px;
   width: 99%;
@@ -83,8 +88,18 @@
 
 .buttonapp {
   margin-top: 20px;
-  margin-left: 150px;
-  width: 200px;
+  /* margin-left: 150px; */
+  width: 100%;
+}
+
+.buttonapp a{
+  margin-top: 20px;
+  /* margin-left: 150px; */
+  width: 100%;
+}
+
+.buttonapp a button{
+  width: 100%;
 }
 .gttitle {
   font-size: 50px;

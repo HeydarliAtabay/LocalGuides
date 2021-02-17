@@ -123,18 +123,18 @@
 @media only screen and (max-width: 700px){
     /* Mobile view horizontal*/
 
-    .profile{
+    .profile .profile-data{
         margin-bottom: 4.5rem;
     }
 
     .profile-photo {
         padding: 0.5rem;
         padding-bottom: 0;
-        height: 19rem;
+        height: 20rem;
     }
     
     .profile-photo img {
-        /* margin-left: 1rem; */
+        margin-left: 1rem;
         height: 9rem;
         width: 9rem;
     }

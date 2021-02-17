@@ -4,7 +4,8 @@ import './CSS/MainPage.css'
 import Search from './Search';
 import Script from 'react-load-script';
 import { Link } from 'react-router-dom';
-
+import picture from '../assets/myGuide.png'
+const bell = <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M22.656 6.383c-.216-.817.023-1.696.627-2.298l.003-.003c.475-.474.714-1.095.714-1.712 0-1.305-1.051-2.37-2.37-2.37-.618 0-1.239.238-1.714.712l-.002.003c-.604.604-1.48.844-2.299.626-5.93-1.57-11.011 7.819-16.211 5.179l-1.404 1.406 16.073 16.074 1.405-1.406c-2.64-5.198 6.751-10.28 5.178-16.211zm-.154-4.887c.444.443.444 1.165 0 1.608-.443.443-1.163.442-1.606-.001s-.444-1.164 0-1.606c.443-.444 1.164-.444 1.606-.001zm-11.731 20.504c-.646.646-1.535 1-2.422 1-.874 0-1.746-.346-2.376-.976-1.27-1.27-1.308-3.563-.024-4.846l4.822 4.822z"/></svg>;
 class MainPage extends Component {
 
 
@@ -111,6 +112,18 @@ handlePlaceSelect = () => {
   render() {
     return (
       <div id="main">
+        {this.props.user.userType==="guide" &&
+  <>
+  <div className="profile-photoM">
+   <img alt="Profile" 
+                        src={picture} /></div>
+        <h1>Hello {this.props.user.name}</h1>
+        <h5>{bell} You have new trip request! </h5>
+        </>
+        }
+
+      {this.props.user.userType==="tourist" &&
+        <>
         <Script url="https://maps.googleapis.com/maps/api/js?                               key=your_api_key&libraries=places"          
                 onLoad={this.handleScriptLoad}        />
          
@@ -129,6 +142,8 @@ handlePlaceSelect = () => {
           </div>
             <Button id={'nearby'} onClick={()=>this.callLoc()} block>Near by Guides</Button>
         </div>
+        </>
+         }
 
       </div>
     );
