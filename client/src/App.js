@@ -36,14 +36,14 @@ class App extends Component {
     }
 
     setFilter=()=>{
-      API.filterRequest(35, 5)
+      API.filterRequest(35, 4)
               .then((res) => {   
-                this.setState({guidelist: res});
+                this.setState({guidelist: res, filter: !this.state.filter});
               }).catch((error) => {
                   console.error(error);
               })
 
-          this.setState({filter: !this.state.filter});
+          // this.setState({filter: !this.state.filter});
             
     }
 
@@ -82,6 +82,7 @@ class App extends Component {
           
         }
         
+        
           <Switch>
             <Route  exact path="/">
               <Login setUser={this.setUser}/>
@@ -93,12 +94,11 @@ class App extends Component {
              
             </Route>
             <Route path="/guides">
-              
                 <GuideList guidelist={this.state.guidelist} city={this.state.city} setGuide={this.setGuide}/>
-
             </Route>
 
             <Route path="/filter">
+              <Sidebar></Sidebar>
                 <Filter setFilter={this.setFilter} filter={this.state.filter}/>
             </Route>
 
@@ -136,12 +136,10 @@ class App extends Component {
             </Route>
             <Route path="/chat">
               
-                {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <Chat user={this.state.user} chat={this.state.chat}/>
             </Route>
             <Route path="/main">
             
-               {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
                 <MainPage user={this.state.user} setCity={this.setCity}/>             
               </Route>
             <Route path="/trips">

@@ -5,6 +5,7 @@ import "./CSS/Filter.css"
 import { Button,FormCheck,Form } from 'react-bootstrap'
 import Slider from '@material-ui/core/Slider';
 import API from '../API/APIuser.js';
+import { Link } from 'react-router-dom';
 
 
 export default class Filter extends Component {
@@ -143,7 +144,9 @@ export default class Filter extends Component {
             </div>
 
             <div className="buttonapp">
-                <Button onClick={()=>this.props.setFilter()} variant="success" size="lg"> Apply</Button>
+              <Link to='/guides'>
+                <Button onClick={this.props.setFilter()} variant="success" size="lg"> Apply</Button>
+              </Link>
             </div>
                
                
