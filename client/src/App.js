@@ -32,6 +32,7 @@ class App extends Component {
         name: "",
         filter: false,
         guidelist: [],
+        guideLang: [],
         filterStates: {
           price: [15, 35],
           rating: [3, 5],

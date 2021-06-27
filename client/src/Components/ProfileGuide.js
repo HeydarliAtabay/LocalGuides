@@ -46,6 +46,7 @@ class ProfileGuide extends React.Component {
                 guide.rating = parseInt(guide.rating);
                 guide.language = guide.language.join(', ');
                 this.setState({guide: guide});
+                this.props.guideLang(this.state.guide.language);
                 
             }).catch((error) => {
                 console.error(error);
