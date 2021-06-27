@@ -27,13 +27,13 @@ export default function   GuideItem(props) {
               <img className="languages" src={props.flag3} />
             {/* </span> */}
           <div className="Rating">
-            {[...Array(rating)].map(star =>{
-              return  <FaStar size={20} color="#ffc107"/>
+            {[...Array(rating)].map((star, i) =>{
+              return  <FaStar size={20} color="#ffc107" key={i}/>
             })
             
             }
-            {[...Array(less)].map(star =>{
-              return  <FaStar size ={20} color="#808080"/>
+            {[...Array(less)].map((star, i) =>{
+              return  <FaStar size ={20} color="#808080" key={i}/>
             })
             }
 

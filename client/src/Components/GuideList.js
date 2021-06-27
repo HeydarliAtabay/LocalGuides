@@ -63,9 +63,9 @@ export default class GuideList extends Component {
            
                 <div className="guideitemcont">
                     {
-                        this.state.guidelist.map(guide => {
+                        this.state.guidelist.map((guide, index) => {
                             return (
-                                <Link to={'/guide'} onClick={() =>this.props.setGuide(guide.id)}>
+                                <Link to={'/guide'} onClick={() =>this.props.setGuide(guide.id)} key={index}>
                                     <GuideItem
                                     username={guide.name + ' ' + guide.surname} 
                                     photo={guide.photo} 

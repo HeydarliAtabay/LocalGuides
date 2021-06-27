@@ -16,12 +16,50 @@ export default class Filter extends Component {
       super(props);
       this.state = {
           price: null,
-
+          filter: this.props.filterStates
       }
   }
 
-  
-
+  handleChange = (e, event, val) => {
+        switch(event){
+          case 'price': this.setState({filter:{ price: val, 
+                                                rating: this.state.filter.rating, 
+                                                gender: this.state.filter.gender,
+                                                languages: this.state.filter.languages,
+                                                interests: this.state.filter.interests}})
+            break;
+          case 'rating': this.setState({filter:{  price: this.state.filter.price, 
+                                                  rating: val, 
+                                                  gender: this.state.filter.gender,
+                                                  languages: this.state.filter.languages,
+                                                  interests: this.state.filter.interests}})
+            break;
+          case 'lang':  let lang = this.state.filter.languages
+                        if(e.target.checked) lang.push(val)
+                        else lang = lang.filter((it)=>{return it != val})
+                        this.setState({filter:{ price: this.state.filter.price, 
+                                                rating: this.state.filter.rating, 
+                                                gender: this.state.filter.gender,
+                                                languages: lang,
+                                                interests: this.state.filter.interests}})
+            break;
+          case 'gender': this.setState({filter:{  price: this.state.filter.price, 
+                                                  rating: this.state.filter.rating, 
+                                                  gender: val,
+                                                  languages: this.state.filter.languages,
+                                                  interests: this.state.filter.interests}})
+            break;
+          case 'interests': let inter = this.state.filter.interests
+                            if(e.target.checked) inter.push(val)
+                            else inter = inter.filter((it)=>{return it != val})
+                            this.setState({filter:{ price: this.state.filter.price, 
+                                                    rating: this.state.filter.rating, 
+                                                    gender: this.state.filter.gender,
+                                                    languages: this.state.filter.languages,
+                                                    interests: inter}})
+            break;
+        }
+  }
 
     render() {
         const pricemarks = [
@@ -83,7 +121,8 @@ export default class Filter extends Component {
               <h3 style={{marginLeft:20}}>Price range (€/hr)</h3>
               <div className="slider">
                 <Slider 
-                  defaultValue={[15,35]}
+                  defaultValue={[this.props.filterStates.price[0], this.props.filterStates.price[1]]}
+                  onChange={(e, val) => this.handleChange(e, 'price', val)} 
                   aria-labelledby="discrete-slider-custom"
                   step={1}
                   max={50}
@@ -97,7 +136,8 @@ export default class Filter extends Component {
               <h3 style={{marginLeft:20}}>Rating</h3>  
               <div className="slider">
                 <Slider 
-                  defaultValue={[3,5]}
+                  defaultValue={[this.props.filterStates.rating[0], this.props.filterStates.rating[1]]}
+                  onChange={(e, val) => this.handleChange(e, 'rating', val)} 
                   aria-labelledby="discrete-slider-custom"
                   step={1}
                   max={5}
@@ -112,44 +152,56 @@ export default class Filter extends Component {
             <div className="langcheck interests-container">
                   <span>
                     <input type="checkbox" 
-                            id="sport" 
-                            name="Sport" />
-                    <label htmlFor="sport"> Italian</label>
+                            id="it" 
+                            name="it" 
+                            defaultChecked={this.state.filter.languages.some((it)=> it === 'it')}
+                            onChange={(e) => this.handleChange(e, 'lang', 'it')}/>
+                    <label htmlFor="it"> Italian</label>
                   </span>
                   
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> English</label>
+                          id="en" 
+                          name="en" 
+                          defaultChecked={this.state.filter.languages.some((it)=> it === 'en')}
+                          onChange={(e) => this.handleChange(e, 'lang', 'en')}/>
+                    <label htmlFor="en"> English</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Russian</label>
+                          id="ru" 
+                          name="ru" 
+                          defaultChecked={this.state.filter.languages.some((it)=> it === 'ru')}
+                          onChange={(e) => this.handleChange(e, 'lang', 'ru')}/>
+                    <label htmlFor="ru"> Russian</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Azerbaijani</label>
+                          id="az" 
+                          name="az" 
+                          defaultChecked={this.state.filter.languages.some((it)=> it === 'az')}
+                          onChange={(e) => this.handleChange(e, 'lang', 'az')}/>
+                    <label htmlFor="az"> Azerbaijani</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Turkish</label>
+                          id="tr" 
+                          name="tr" 
+                          defaultChecked={this.state.filter.languages.some((it)=> it === 'tr')}
+                          onChange={(e) => this.handleChange(e, 'lang', 'tr')}/>
+                    <label htmlFor="tr"> Turkish</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Polish</label>
+                          id="pl" 
+                          name="pl" 
+                          defaultChecked={this.state.filter.languages.some((it)=> it === 'pl')}
+                          onChange={(e) => this.handleChange(e, 'lang', 'pl')}/>
+                    <label htmlFor="pl"> Polish</label>
                   </span>
                   
               {/* <Form>
@@ -169,23 +221,29 @@ export default class Filter extends Component {
             <div className="langcheck">
                   <span>
                     <input type="radio" 
-                            id="sport" 
-                            name="gender" />
-                    <label htmlFor="gender"> Male</label>
+                            id="male" 
+                            name="gender" 
+                            defaultChecked= {this.state.filter.gender === 'Male'}
+                            onChange={(e) => this.handleChange(e, 'gender', 'Male')}/>
+                    <label htmlFor="male"> Male</label>
                   </span>
 
                   <span>
                     <input type="radio" 
-                            id="sport" 
-                            name="gender" />
-                    <label htmlFor="gender"> Female</label>
+                            id="female" 
+                            name="gender" 
+                            defaultChecked= {this.state.filter.gender === 'Female'}
+                            onChange={(e) => this.handleChange(e, 'gender', 'Female')}/>
+                    <label htmlFor="female"> Female</label>
                   </span>
 
                   <span>
                     <input type="radio" 
-                            id="sport" 
-                            name="gender" />
-                    <label htmlFor="gender"> All</label>
+                            id="all" 
+                            name="gender" 
+                            defaultChecked= {this.state.filter.gender === 'All'}
+                            onChange={(e) => this.handleChange(e, 'gender', 'All')}/>
+                    <label htmlFor="all"> All</label>
                   </span>
                   {/* <Form>
                         <Form.Check inline label="Male"  type='radio' name="gender"/>
@@ -201,37 +259,47 @@ export default class Filter extends Component {
                   <span>
                     <input type="checkbox" 
                             id="sport" 
-                            name="Sport" />
+                            name="Sport" 
+                            defaultChecked={this.state.filter.interests.some((it)=> it === 'sport')}
+                            onChange={(e) => this.handleChange(e, 'interests', 'sport')}/>
                     <label htmlFor="sport"> Sport</label>
                   </span>
                   
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Music</label>
+                          id="music" 
+                          name="music" 
+                          defaultChecked={this.state.filter.interests.some((it)=> it === 'music')}
+                          onChange={(e) => this.handleChange(e, 'interests', 'music')}/>
+                    <label htmlFor="music"> Music</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Games</label>
+                          id="games" 
+                          name="games" 
+                          defaultChecked={this.state.filter.interests.some((it)=> it === 'games')}
+                          onChange={(e) => this.handleChange(e, 'interests', 'games')}/>
+                    <label htmlFor="games"> Games</label>
                   </span>
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Museum</label>
+                          id="museum" 
+                          name="museum" 
+                          defaultChecked={this.state.filter.interests.some((it)=> it === 'museum')}
+                          onChange={(e) => this.handleChange(e, 'interests', 'museum')}/>
+                    <label htmlFor="museum"> Museum</label>
                   </span>
 
 
                   <span>
                     <input type="checkbox" 
-                          id="sport" 
-                          name="Sport" />
-                    <label htmlFor="sport"> Art</label>
+                          id="art" 
+                          name="art" 
+                          defaultChecked={this.state.filter.interests.some((it)=> it === 'art')}
+                          onChange={(e) => this.handleChange(e, 'interests', 'art')}/>
+                    <label htmlFor="art"> Art</label>
                   </span>
 
               {/* <Form>
@@ -245,7 +313,7 @@ export default class Filter extends Component {
 
             <div className="buttonapp">
               <Link to='/guides'>
-                <Button onClick={()=>this.props.setFilter()} variant="success" size="lg"> Apply</Button>
+                <Button onClick={()=>this.props.setFilter(this.state.filter)} variant="success" size="lg"> Apply</Button>
               </Link>
             </div>
                
