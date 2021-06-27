@@ -32,11 +32,19 @@ class App extends Component {
         name: "",
         filter: false,
         guidelist: [],
-        guideLang: []
+        filterStates: {
+          price: [15, 35],
+          rating: [3, 5],
+          languages: [],
+          gender: undefined,
+          interests: []
+
+          }
       }
     }
 
-    setFilter=()=>{
+    setFilter=(filter)=>{
+      this.setState({filterStates: filter})
       API.filterRequest(35, 4)
               .then((res) => {   
                 console.log('setfilter api res' + res)
@@ -50,7 +58,15 @@ class App extends Component {
     }
 
     clrfilter = () => {
-      this.setState({guidelist: []});
+      this.setState({ guidelist: [],
+                      filterStates: {
+                        price: [15, 35],
+                        rating: [3, 5],
+                        languages: [],
+                        gender: undefined,
+                        interests: []
+                      }
+                  });
     }
     
     setUser=(e)=>{
@@ -115,7 +131,7 @@ class App extends Component {
 
             <Route path="/filter">
               <Sidebar></Sidebar>
-                <Filter setFilter={this.setFilter} filter={this.state.filter} clrfilter={this.clrfilter}/>
+                <Filter setFilter={this.setFilter} filter={this.state.filter} clrfilter={this.clrfilter} filterStates={this.state.filterStates}/>
             </Route>
 
             <Route path="/create">
