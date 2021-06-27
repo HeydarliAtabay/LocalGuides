@@ -34,7 +34,6 @@ export default class GuideList extends Component {
     }
 
 
-
     componentDidMount(){
         // default city is Torino it will be changed after real implementation
         if(this.props.guidelist.length > 0){

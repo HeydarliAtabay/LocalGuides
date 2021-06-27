@@ -86,6 +86,10 @@
   margin-left: 30px;
 }
 
+.langcheck span {
+  margin-right: 20px;
+}
+
 .buttonapp {
   margin-top: 20px;
   /* margin-left: 150px; */
@@ -101,10 +105,12 @@
 .buttonapp a button{
   width: 100%;
 }
+
 .gttitle {
   font-size: 50px;
   text-align: center;
 }
+
 .post__avatar {
   margin-right: 10px;
 }
@@ -181,4 +187,10 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+}
+
+
+.interests-container input {
+  width: 1rem;
+  height: 1rem;
 }

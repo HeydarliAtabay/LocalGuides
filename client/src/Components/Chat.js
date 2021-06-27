@@ -55,7 +55,12 @@ class Chat extends React.Component {
                     <span>
                         <Link to="/inbox" >{backbutton}</Link>
                     </span>
-                    <label className="partner-name">{ this.state.user.opponentName }</label>
+                    <label className="partner-name">
+                        <Link to="/guide">
+                            { this.state.user.opponentName }
+                        </Link>
+                        
+                    </label>
                 </div>
 
                 <div className="chat-box">

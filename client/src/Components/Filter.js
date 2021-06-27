@@ -75,10 +75,12 @@ export default class Filter extends Component {
         return (
             <div className="flt">
               <h3 className="title">Filters</h3>
-              <h2 className="filtertxt" onClick={this.props.clrfilter}>Clear selections</h2>
+              <h2 className="filtertxt" onClick={this.props.clrfilter}>
+                <Link to="/guides" >Clear selections</Link>
+              </h2>
             <div className="pricecont">
 
-              <h3 style={{marginLeft:20}}>Price range</h3>
+              <h3 style={{marginLeft:20}}>Price range (€/hr)</h3>
               <div className="slider">
                 <Slider 
                   defaultValue={[15,35]}
@@ -95,7 +97,7 @@ export default class Filter extends Component {
               <h3 style={{marginLeft:20}}>Rating</h3>  
               <div className="slider">
                 <Slider 
-                  defaultValue={[4]}
+                  defaultValue={[3,5]}
                   aria-labelledby="discrete-slider-custom"
                   step={1}
                   max={5}
@@ -107,15 +109,57 @@ export default class Filter extends Component {
             </div>
             <div className="languagecont">
               <h3 style={{marginLeft:20}}>Languages</h3>
-            <div className="langcheck">
-              <Form>
+            <div className="langcheck interests-container">
+                  <span>
+                    <input type="checkbox" 
+                            id="sport" 
+                            name="Sport" />
+                    <label htmlFor="sport"> Italian</label>
+                  </span>
+                  
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> English</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Russian</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Azerbaijani</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Turkish</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Polish</label>
+                  </span>
+                  
+              {/* <Form>
                     <Form.Check inline label="Italian"  type='checkbox'/>
                     <Form.Check inline label="English" type='checkbox'/>
                     <Form.Check inline label="Russian" type='checkbox'/>
                     <Form.Check inline label="Azerbaijani" type='checkbox'/>
                     <Form.Check inline label="Turkish" type='checkbox'/>
                     <Form.Check inline label="Polish" type='checkbox'/>
-              </Form>
+              </Form> */}
             </div>
 
             </div>
@@ -123,23 +167,79 @@ export default class Filter extends Component {
             <div className="gendercont">
               <h3 style={{marginLeft:20}}>Gender</h3>
             <div className="langcheck">
-                  <Form>
+                  <span>
+                    <input type="radio" 
+                            id="sport" 
+                            name="gender" />
+                    <label htmlFor="gender"> Male</label>
+                  </span>
+
+                  <span>
+                    <input type="radio" 
+                            id="sport" 
+                            name="gender" />
+                    <label htmlFor="gender"> Female</label>
+                  </span>
+
+                  <span>
+                    <input type="radio" 
+                            id="sport" 
+                            name="gender" />
+                    <label htmlFor="gender"> All</label>
+                  </span>
+                  {/* <Form>
                         <Form.Check inline label="Male"  type='radio' name="gender"/>
                         <Form.Check inline label="Female" type='radio' name="gender"/>
                         <Form.Check inline label="All" type='radio' name="gender"/>
-                  </Form>
+                  </Form> */}
             </div>
             </div>
 
             <div className="interestcont">
               <h3 style={{marginLeft:20}}>Interests</h3>
             <div className="langcheck">
-              <Form>
+                  <span>
+                    <input type="checkbox" 
+                            id="sport" 
+                            name="Sport" />
+                    <label htmlFor="sport"> Sport</label>
+                  </span>
+                  
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Music</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Games</label>
+                  </span>
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Museum</label>
+                  </span>
+
+
+                  <span>
+                    <input type="checkbox" 
+                          id="sport" 
+                          name="Sport" />
+                    <label htmlFor="sport"> Art</label>
+                  </span>
+
+              {/* <Form>
                     <Form.Check inline label="Sport"  type='checkbox'/>
                     <Form.Check inline label="Art" type='checkbox'/>
                     <Form.Check inline label="Night life" type='checkbox'/>
                     <Form.Check inline label="Museums" type='checkbox'/>
-              </Form>
+              </Form> */}
             </div>
             </div>
 

@@ -66,10 +66,10 @@ export default class GuideRequest extends Component {
                     </span>
                     <div className="profile-photo-req">
                       <img alt="Profile" 
-                                    src={this.state.guide.photo || photo} />
+                                    src={'http://192.168.1.123:3001/profile-photos/698d6947-2dce-404a-bd65-a4fc4b0955be-lisa.jpg'} />
                       <span id="prof-data">
-                        <label> <b>Victoria Valentin</b>i</label>
-                        <label> <b>Age: </b>24</label>
+                        <label> <b>Lisa Simpson</b></label>
+                        <label> <b>Age: </b>23</label>
                         <label> <b>Country: </b> Italy</label>
                       </span>
     
@@ -77,8 +77,8 @@ export default class GuideRequest extends Component {
                       <span ><center><h5>Trip information</h5></center></span>
                       <div className="datecontain">
                         <h5 >Date</h5>
-                        <label><b>From: </b> 08/02/2021</label><br/>
-                        <label><b>To: </b> 10/02/2021</label>
+                        <label><b>From: </b> 18/03/2021</label><br/>
+                        <label><b>To: </b> 21/03/2021</label>
                       </div>
                         
     
@@ -89,7 +89,7 @@ export default class GuideRequest extends Component {
                     </div>
     
                     <div className="datecontain num">
-                      <label><b>Number of Tourists: </b> 3</label>
+                      <label><b>Number of Tourists: </b> 1</label>
                     </div>
                     </div>
     

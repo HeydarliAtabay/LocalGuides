@@ -23,7 +23,7 @@ function CreateTrip(props) {
       };
       
     const sendTripRequest = () => {
-    API.sendTripRequest(startDate, endDate, props.guide, "Turin", startNum, "waiting", props.user.id)
+    API.sendTripRequest(startDate, endDate, props.guide, "Turin", startNum, "pending", props.user.id)
         .then((res) => {   
 
         }).catch((error) => {

@@ -140,7 +140,7 @@ handlePlaceSelect = () => {
               </Link>
               
           </div>
-            <Button id={'nearby'} onClick={()=>this.callLoc()} block>Near by Guides</Button>
+            <Button id={'nearby'} onClick={()=>this.callLoc()} block>Near me</Button>
         </div>
         </>
          }

@@ -39,7 +39,7 @@ class App extends Component {
       API.filterRequest(35, 4)
               .then((res) => {   
                 console.log('setfilter api res' + res)
-                this.setState({guidelist: res, filter: !this.state.filter});
+                this.setState({guidelist: res});
               }).catch((error) => {
                   console.error(error);
               })
@@ -51,6 +51,7 @@ class App extends Component {
     clrfilter = () => {
       this.setState({guidelist: []});
     }
+    
     setUser=(e)=>{
        this.setState({user: e})
     }

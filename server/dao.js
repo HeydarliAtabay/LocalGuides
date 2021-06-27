@@ -93,7 +93,7 @@ exports.getChats = function(userId){
                 + 'WHERE (i.reciever = ? OR i.sender = ?) AND ' 
                 + 'u.id = CASE WHEN i.sender <> ? THEN i.sender '
                             + 'ELSE i.reciever END '
-                + 'GROUP by i.chatId';
+                + 'GROUP by i.chatId ORDER BY i.chatId DESC';
     
     db.all(query, [userId, userId, userId], function(err, rows) {
             if(err) {
@@ -158,9 +158,12 @@ exports.getGuide = function(id){
                     reject(err);
                   } 
                   else {
-                    row.language = rows.map(function(elem){
+                    if(row){
+                      row.language = rows.map(function(elem){
                         return elem.name;
                       });
+                    }
+                    
                     resolve(row);
                   }
                 });
@@ -172,7 +175,7 @@ exports.getGuide = function(id){
 exports.getGuideList = function(city){
 
   return new Promise((resolve, reject) => {
-    const query = 'SELECT * FROM users WHERE city = ? AND "user-type" = "guide"';
+    const query = 'SELECT * FROM users WHERE city = ? AND "user-type" = "guide" ORDER BY rating DESC';
     
     db.all(query, [city], function(err, rows) {
             if(err) {
@@ -230,12 +233,12 @@ exports.acceptRequest = function(user, guide){
 
 exports.filterRequest = function(price, rating){
 return new Promise((resolve, reject) => {
-  const query = 'SELECT * FROM users WHERE price<=? and rating>=? ORDER By rating DESC';
+  const query = 'SELECT * FROM users WHERE price<=? and rating>=? AND "user-type" = "guide" ORDER By rating DESC';
   db.all(query, [price, rating], function(err, rows) {
           if(err) {
             reject(err);
           } else if (rows.length === 0) 
-            resolve(undefined);
+            resolve([]);
           else {
             resolve(rows);
           }
