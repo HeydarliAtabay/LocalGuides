@@ -31,20 +31,12 @@ class App extends Component {
         city: null,
         name: "",
         filter: false,
-        guidelist: [], 
-        filterStates: {
-              price: [15, 35],
-              rating: [3, 5],
-              languages: [],
-              gender: undefined,
-              interests: []
-
-        }
+        guidelist: [],
+        guideLang: []
       }
     }
 
-    setFilter=(filter)=>{
-      this.setState({filterStates: filter})
+    setFilter=()=>{
       API.filterRequest(35, 4)
               .then((res) => {   
                 console.log('setfilter api res' + res)
@@ -58,15 +50,7 @@ class App extends Component {
     }
 
     clrfilter = () => {
-      this.setState({ guidelist: [],
-                      filterStates: {
-                        price: [15, 35],
-                        rating: [3, 5],
-                        languages: [],
-                        gender: undefined,
-                        interests: []
-                      }
-                 });
+      this.setState({guidelist: []});
     }
     
     setUser=(e)=>{
@@ -86,6 +70,10 @@ class App extends Component {
     }
     logOut = () =>{
       this.setState({user: null})
+    }
+
+    setlang =(e)=>{
+      this.setState({guideLang: e});
     }
 
 
@@ -127,13 +115,13 @@ class App extends Component {
 
             <Route path="/filter">
               <Sidebar></Sidebar>
-                <Filter setFilter={this.setFilter} filter={this.state.filter} clrfilter={this.clrfilter} filterStates={this.state.filterStates}/>
+                <Filter setFilter={this.setFilter} filter={this.state.filter} clrfilter={this.clrfilter}/>
             </Route>
 
             <Route path="/create">
               
                 {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <CreateTrip user={this.state.user} guide={this.state.guide}/>
+                <CreateTrip guideLang={this.state.guideLang} user={this.state.user} guide={this.state.guide}/>
             
 
             </Route>
@@ -149,7 +137,7 @@ class App extends Component {
             <Route path="/guide">
             
                 {/* <Sidebar setUser={this.setUser} user={this.state.user}/> */}
-                <ProfileGuide guide={this.state.guide} user={this.state.user} setChat={this.setChat}/>
+                <ProfileGuide guideLang={this.setlang}  guide={this.state.guide} user={this.state.user} setChat={this.setChat}/>
              
             </Route>
 

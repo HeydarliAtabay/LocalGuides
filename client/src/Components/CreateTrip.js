@@ -17,6 +17,11 @@ function CreateTrip(props) {
     const [endDate, setEndDate] = useState(new Date());
     const [startNum, setStartNum]=React.useState("");
 
+    const backgroundColor = props.guideLang;
+    var guideLang = backgroundColor.split(', ')
+    console.log(guideLang);
+
+
 
     const onChangeHandler = event => {
         setStartNum(event.target.value);
@@ -55,12 +60,11 @@ function CreateTrip(props) {
                 <div className="datecont">
                     <h4>Languages</h4>
                     <Form>
-                        <Form.Check inline label="Italian"  type='checkbox'/>
-                        <Form.Check inline label="English" type='checkbox'/>
-                        <Form.Check inline label="Russian" type='checkbox'/>
-                        <Form.Check inline label="Azerbaijani" type='checkbox'/>
-                        <Form.Check inline label="Turkish" type='checkbox'/>
-                        <Form.Check inline label="Polish" type='checkbox'/>
+                {guideLang.map((lan, i)=>{
+                    return (
+                        <Form.Check inline label={lan}  type='checkbox' key={i}/>
+                    )
+                })}
                     </Form>
                 </div>
 
