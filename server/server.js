@@ -221,6 +221,16 @@ app.post('/api/sendTripRequest/', (req, res) => {
     });
   });
 
+  app.post('/api/ratings/', (req, res) => {
+    const rating=req.body.rating
+    console.log(rating)
+    dao.addRating(rating).then((ok) => {
+
+       res.status(200).end();
+    }).catch( error => {
+      res.status(502).json(error);
+    });
+  });
 
 /// socket///
 
@@ -260,7 +270,7 @@ io.on("connection", (socket) => {
 //****************************************************** */ */
 //// In case of error during run server 
 //// comment below line (http.listen...)
- http.listen(PORT, '192.168.1.123', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
+ http.listen(PORT, 'localhost', ()=>{console.log(`Server running on http://192.168.1.123:${PORT}/`)});
 //// then decommment below line (http.listen...)
 // http.listen(PORT, ()=>{console.log(`Server running on http://localhost:${PORT}/`)});
 /// and chnage proxy to 'http://localhost:3001' in package.json and useChat.js of client side

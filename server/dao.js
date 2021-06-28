@@ -245,3 +245,21 @@ return new Promise((resolve, reject) => {
   });
 })
 }
+
+exports.addRating = function(rating){
+
+  return new Promise((resolve, reject) => {
+    const query = 'INSERT INTO rating (guide_id, user_id, rating, comment) VALUES(?, ?, ?, ?)';
+    console.log("sada:" + rating.user_id)
+    db.run(query, [rating.guide_id, rating.user_id, rating.rating, rating.comment], function(err, row) {
+            if(err) {
+              reject(err);
+            }
+            else {
+              resolve(null);
+            }
+    });
+  })
+}
+
+

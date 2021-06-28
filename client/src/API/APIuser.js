@@ -173,8 +173,29 @@ async function sendTripRequest(StartDate, EndDate,Guide,City,TouristCount,Status
                         }
                 }).catch((err) => { reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
             });
-            }        
+            }     
+            
+            async function addRating(rating) {
+                return new Promise((resolve, reject) => {
+                    fetch('/api/ratings/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({rating:rating})
+                    }).then((response) => {
+                        if (response.ok) {
+                            resolve(response.json());
+                        } else {
+                            // analyze the cause of error
+                            response.json()
+                                .then((obj) => {  reject(obj); }) // error msg in the response body
+                                .catch((err) => { reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+                            }
+                    }).catch((err) => { reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+                });
+                }  
 
-const userMethods = {userLogin, filterRequest, acceptTripRequest, sendTripRequest, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList};
+const userMethods = {userLogin, filterRequest, acceptTripRequest, sendTripRequest, uploadPhoto, getMyTrips, editProfile, getChats, getSingleChat, getGuide, getGuideList, addRating};
 
 export default userMethods;

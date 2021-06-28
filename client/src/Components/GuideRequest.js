@@ -66,7 +66,7 @@ export default class GuideRequest extends Component {
                     </span>
                     <div className="profile-photo-req">
                       <img alt="Profile" 
-                                    src={'http://192.168.1.123:3001/profile-photos/698d6947-2dce-404a-bd65-a4fc4b0955be-lisa.jpg'} />
+                                    src={'http://localhost:3001/profile-photos/698d6947-2dce-404a-bd65-a4fc4b0955be-lisa.jpg'} />
                       <span id="prof-data">
                         <label> <b>Lisa Simpson</b></label>
                         <label> <b>Age: </b>23</label>
