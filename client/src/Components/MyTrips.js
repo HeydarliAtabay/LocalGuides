@@ -149,10 +149,10 @@ function Isfendiyar(props){
     return(
         <Modal {...props} centered>
         <Modal.Header>
-          <Modal.Title>Rate the Guide {props.guideId}</Modal.Title>
+          <Modal.Title>Rate the Guide </Modal.Title>
         </Modal.Header>
           <Modal.Body>
-            
+            Rate:
           <ReactStars
           onChange={(ev)=>props.rate(ev)}
           count={5}
@@ -164,7 +164,7 @@ function Isfendiyar(props){
           activeColor="#ffd700"
         />
         <Form.Group>
-        <Form.Label> Comment </Form.Label>
+        <Form.Label> Comment: </Form.Label>
         <Form.Control
         type="text"
         value={props.comment}

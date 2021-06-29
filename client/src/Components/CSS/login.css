@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 
 body{
-  background: rgb(34,193,195);
+  /* background: rgb(34,193,195); */
   /* background-image: url("../"); */
-  background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+  background: linear-gradient(135deg, rgb(195, 34, 133) 0%,     rgb(45, 187, 253) 100%); 
+ /* background: rgba(51, 89, 196, 0.295); */
   font-family: "work sans";
+  height: 100%;
 }
 
 html{
   font-size: 100%;
-  height: 100%
+  height: 100%;
 }
 
 #loginform{

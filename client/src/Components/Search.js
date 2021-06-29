@@ -67,7 +67,7 @@ class Search extends Component {
           url="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdsWZhSz2ywKbP99Zl1uaw65oTBqtSiJI&libraries=places"
           onLoad={this.props.handleScriptLoad}
         />
-        <input onChange={(e)=>this.props.handleChangeSearch(e)} value={this.props.location} id="autocomplete" placeholder="search city..." 
+        <input onChange={(e)=>this.props.handleChangeSearch(e)} value={this.props.location} id="autocomplete" placeholder="   search city..." 
           style={{
             margin: '0 auto',
             maxWidth: 800,
